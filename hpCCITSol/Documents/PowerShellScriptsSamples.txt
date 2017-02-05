@@ -1,0 +1,14 @@
+﻿#Sample:1
+
+# Windows PowerShell example to check 'If File Exists'
+$ChkFile = "C:\Windows\explorer.exe" 
+$FileExists = Test-Path $ChkFile 
+If ($FileExists -eq $True) {
+Write-Host "Yippee, explorer.exe exists"
+}
+return "[STATUS:COMPLETED]"
+
+
+#Sample:2
+Write-Host "Hello, World!"
+return "I am returning this message [STATUS:COMPLETED]"
