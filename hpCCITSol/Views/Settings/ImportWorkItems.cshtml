@@ -1,0 +1,253 @@
+﻿@{
+    ViewBag.Title = "hpCCIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <script src="~/Scripts/SettingsController.js"></script>
+
+
+<div ng-controller="SettingsController" id="div12">
+
+<div class="container" style="padding-top: 50px;">
+    <h1 style="text-align:center">Import Sprint/WorkItems</h1>
+
+</div>
+
+<div class="container" id="body">
+
+    <div class="row">
+        <div class="col-md-1">
+            <span ng-click="AddNew();" class="btn btn-success">Add WorkItem</span>
+        </div>
+        <div class="col-md-9">
+        </div>
+        <div class="col-md-1">
+            <span ng-click="SearchModal();" class="btn btn-success">Search</span>
+        </div>
+        <div class="col-md-1">
+                <span ng-click="SearchClear();" class="btn btn-warning">Clear</span>
+        </div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-md-12">
+            <div ui-grid="gridOptionsExtermalWorkItems" ui-grid-edit ui-grid-selection ui-grid-exporter style="height:250px;" class="grid"></div>
+        </div>
+    </div>
+            <div class="row">
+                    <div class="col-md-12">
+                        <span class="label label-warning">Work Item(s) are new/or not imported earlier.</span>
+                    </div>
+            </div>
+
+    <div class="row" style="padding-top: 10px;">
+        <div class="col-md-12">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 ">
+
+                <div class="row">
+                    <div class="col-md-12">
+                            <div ui-grid="gridOptionsWorkItem" ui-grid-edit ui-grid-selection  ui-grid-auto-resize style="height:450px;" class="grid"></div>
+                    </div>
+                    </div>
+                <div class="row" style="padding-top: 10px;padding-bottom: 10px;">
+                    <div class="col-md-12">
+                        <button class="btn btn-danger pull-right"  style="margin-left: 5px;" type="button" ng-click="cancel()">Cancel</button>
+                        <button class="btn btn-success pull-right"  type="button" ng-click="SaveReleaseWorkItems()">Save</button>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+ 
+
+</div>
+
+
+
+
+<div class="container">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header bg-info">
+            <h3 class="modal-title">Work Item</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+                <div class="col-xs-8">
+                    <label class="control-label">Release Name</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.release_nm" />
+                </div>
+
+                <div class="col-xs-4">
+                    <label class="control-label">Release Date</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.release_dt" />
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-8">
+                    <label class="control-label">Description</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.release_descr" />
+                </div>
+            <div class="col-xs-4">
+                <label class="control-label">Sprint</label>
+                <div isteven-multi-select input-model="releaseSprints" output-model="selecteddata.sprint"  button-label="sprint_nm"  item-label="sprint_nm" tick-property="ticked"></div>
+            </div>
+            </div>
+
+
+
+            <div class="row" class="ng-hide" ng-show="IsEdit">
+                <div class="col-xs-2">
+                    <label class="control-label">Release Notes</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.created_usr_id" disabled/>
+                    </div>
+                <div class="col-xs-2">
+                    <label class="control-label">IT Validation</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.created_dtm" disabled/>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Business Validation</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.modified_usr_id" disabled/>
+                    </div>
+                <div class="col-xs-2">
+                </div>
+                <div class="col-xs-2">
+                </div>
+                <div class="col-xs-2">
+                </div>
+            </div>
+
+
+            <div class="row" class="ng-hide" ng-show="IsEdit">
+                <div class="col-xs-2">
+                    <label class="control-label">Created By</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.created_usr_id" disabled/>
+                    </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Created Date</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.created_dtm" disabled/>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Modified By</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.modified_usr_id" disabled/>
+                    </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Modified Date</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.modified_dtm" disabled/>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Status</label>
+                    <select class="form-control" id="dn_status" ng-model="selecteddata.status" ng-options="status_ref.status_nm for status_ref in startupdata.statuses track by status_ref.status_id">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-2">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Comments</label>
+            <textarea class="form-control" name="review" rows="4" ng-model="tmp_data.comments"></textarea>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok()">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+</div>
+
+
+
+
+<div class="container">
+    <script type="text/ng-template" id="myModalSearch.html">
+        <div class="modal-header bg-warning">
+            <h3 class="modal-title">Search</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+
+             <div class="col-md-3">
+                <label class="control-label">Sprint(sa)</label>
+                <input type="text" class="form-control" placeholder="Sprint_MM_YYYY;" id="config_key" ng-model="filters.sprint_nm" />
+            </div>
+
+            <div class="col-md-3">
+                <label class="control-label">Application(s)</label>
+                <input type="text" placeholder="APP1;APP2;" class="form-control" ng-model="filters.application_nm" />
+            </div>
+            <div class="col-md-3">
+                <label class="control-label">Work Item(s)</label>
+                <input type="text" class="form-control" placeholder="VOICE-XXXX;" ng-model="filters.work_item_nm" />
+
+            </div>
+            <div class="col-md-3">
+                <label class="control-label">Scope</label>
+                <div isteven-multi-select input-model="startupdata.scopes" output-model="filters.scope"  button-label="scope_nm"  item-label="scope_nm" tick-property="ticked"></div>
+            
+            </div>
+
+        </div>
+
+
+        <div class="row form-group" style="padding-top: 5px;" >
+            <div class="col-md-3">
+                <label class="control-label">Release (s)</label>
+                <input type="text" class="form-control" placeholder="Release1;Release2;" id="config_user" ng-model="filters.release_nm" />
+            </div>
+            <div class="col-md-3" ng-controller="DatepickerCtrl">
+                <label class="control-label">Start date</label>
+
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dates.startdate" is-open="is_open_dates.startdate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event, 'startdate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+
+            <div class="col-md-3" ng-controller="DatepickerCtrl">
+                <label class="control-label">End date</label>
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dates.enddate" is-open="is_open_dates.enddate"  max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event, 'enddate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+
+
+        <div class="modal-footer">
+            <button class="btn btn-warning" type="button" ng-click="SearchClear()">Clear</button>
+            <button class="btn btn-success" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+</div>
+
+
+
+
+
+
+
+</div>

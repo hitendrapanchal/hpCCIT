@@ -1,0 +1,1283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DataModelStoreContainer">
+          <EntitySet Name="api_ref" EntityType="DataModel.Store.api_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="api_type_ref" EntityType="DataModel.Store.api_type_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="application_ref" EntityType="DataModel.Store.application_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="checklist_action_ref" EntityType="DataModel.Store.checklist_action_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="checklist_action_xref" EntityType="DataModel.Store.checklist_action_xref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="checklist_ref" EntityType="DataModel.Store.checklist_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="checklist_template_ref" EntityType="DataModel.Store.checklist_template_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="checklist_template_xref" EntityType="DataModel.Store.checklist_template_xref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="client_ref" EntityType="DataModel.Store.client_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="config_type_ref" EntityType="DataModel.Store.config_type_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="configuration_ref" EntityType="DataModel.Store.configuration_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="deployment_environment_ref" EntityType="DataModel.Store.deployment_environment_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="deployment_mse_environment_ref" EntityType="DataModel.Store.deployment_mse_environment_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="deployment_type_ref" EntityType="DataModel.Store.deployment_type_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="inventory_ref" EntityType="DataModel.Store.inventory_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="release_ref" EntityType="DataModel.Store.release_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="release_sprint_xref" EntityType="DataModel.Store.release_sprint_xref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="release_work_item_xref" EntityType="DataModel.Store.release_work_item_xref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="report_part_ref" EntityType="DataModel.Store.report_part_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="report_ref" EntityType="DataModel.Store.report_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="rfc_detail_ref" EntityType="DataModel.Store.rfc_detail_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="rfc_ref" EntityType="DataModel.Store.rfc_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="rfc_template_application_xref" EntityType="DataModel.Store.rfc_template_application_xref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="rfc_template_detail_ref" EntityType="DataModel.Store.rfc_template_detail_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="rfc_template_ref" EntityType="DataModel.Store.rfc_template_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="scope_ref" EntityType="DataModel.Store.scope_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="server_ref" EntityType="DataModel.Store.server_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="server_type_ref" EntityType="DataModel.Store.server_type_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sprint_ref" EntityType="DataModel.Store.sprint_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="status_ref" EntityType="DataModel.Store.status_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="status_type_ref" EntityType="DataModel.Store.status_type_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sub_type_ref" EntityType="DataModel.Store.sub_type_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="type_ref" EntityType="DataModel.Store.type_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="work_item_ref" EntityType="DataModel.Store.work_item_ref" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="api_ref">
+          <Key>
+            <PropertyRef Name="api_id" />
+          </Key>
+          <Property Name="api_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="api_name" Type="nvarchar" MaxLength="500" />
+          <Property Name="api_type_id" Type="smallint" />
+          <Property Name="client_id" Type="smallint" />
+          <Property Name="application_id" Type="smallint" />
+          <Property Name="api_dev_url" Type="nvarchar" MaxLength="200" />
+          <Property Name="api_dev_version" Type="nvarchar" MaxLength="10" />
+          <Property Name="api_dev_metadata" Type="nvarchar" MaxLength="1000" />
+          <Property Name="api_dev_int_url" Type="nvarchar" MaxLength="200" />
+          <Property Name="api_dev_int_version" Type="nvarchar" MaxLength="10" />
+          <Property Name="api_dev_int_metadata" Type="nvarchar" MaxLength="1000" />
+          <Property Name="api_qa_url" Type="nvarchar" MaxLength="200" />
+          <Property Name="api_qa_version" Type="nvarchar" MaxLength="10" />
+          <Property Name="api_qa_metadata" Type="nvarchar" MaxLength="1000" />
+          <Property Name="api_prod_url" Type="nvarchar" MaxLength="200" />
+          <Property Name="api_prod_version" Type="nvarchar" MaxLength="10" />
+          <Property Name="api_prod_metadata" Type="nvarchar" MaxLength="1000" />
+          <Property Name="api_metadata" Type="nvarchar" MaxLength="1000" />
+          <Property Name="api_comments" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="api_type_ref">
+          <Key>
+            <PropertyRef Name="api_type_id" />
+          </Key>
+          <Property Name="api_type_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="api_type_nm" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="application_ref">
+          <Key>
+            <PropertyRef Name="application_id" />
+          </Key>
+          <Property Name="application_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="application_nm" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="checklist_action_ref">
+          <Key>
+            <PropertyRef Name="checklist_action_id" />
+          </Key>
+          <Property Name="checklist_action_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="checklist_action_nm" Type="nvarchar" MaxLength="1000" />
+          <Property Name="checklist_template_id" Type="smallint" />
+          <Property Name="sub_type_id" Type="smallint" />
+          <Property Name="comments" Type="ntext" />
+          <Property Name="created_dtm" Type="datetime" />
+          <Property Name="created_usr_id" Type="nvarchar" MaxLength="200" />
+          <Property Name="modified_dtm" Type="datetime" />
+          <Property Name="modified_usr_id" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="checklist_action_xref">
+          <Key>
+            <PropertyRef Name="checklist_action_xref_id" />
+          </Key>
+          <Property Name="checklist_action_xref_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="checklist_action_id" Type="int" />
+          <Property Name="checklist_id" Type="int" Nullable="false" />
+          <Property Name="status_id" Type="smallint" />
+          <Property Name="powershell_script" Type="ntext" />
+          <Property Name="powershell_script_execution_comments" Type="ntext" />
+          <Property Name="powershell_script_timedout" Type="int" />
+          <Property Name="priority_order" Type="smallint" />
+          <Property Name="comments" Type="ntext" />
+        </EntityType>
+        <EntityType Name="checklist_ref">
+          <Key>
+            <PropertyRef Name="checklist_id" />
+          </Key>
+          <Property Name="checklist_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="checklist_nm" Type="nvarchar" MaxLength="1000" />
+          <Property Name="sub_type_id" Type="smallint" />
+          <Property Name="default_powershell_script" Type="ntext" />
+          <Property Name="default_powershell_script_timedout" Type="int" />
+        </EntityType>
+        <EntityType Name="checklist_template_ref">
+          <Key>
+            <PropertyRef Name="checklist_template_id" />
+          </Key>
+          <Property Name="checklist_template_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="checklist_template_nm" Type="nvarchar" MaxLength="1000" />
+          <Property Name="sub_type_id" Type="smallint" />
+        </EntityType>
+        <EntityType Name="checklist_template_xref">
+          <Key>
+            <PropertyRef Name="checklist_template_xref_id" />
+          </Key>
+          <Property Name="checklist_template_xref_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="checklist_template_id" Type="smallint" Nullable="false" />
+          <Property Name="checklist_id" Type="int" Nullable="false" />
+          <Property Name="powershell_script" Type="ntext" />
+          <Property Name="powershell_script_timedout" Type="int" />
+          <Property Name="priority_order" Type="smallint" />
+        </EntityType>
+        <EntityType Name="client_ref">
+          <Key>
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="client_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="client_nm" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="config_type_ref">
+          <Key>
+            <PropertyRef Name="config_type_id" />
+          </Key>
+          <Property Name="config_type_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="config_type_nm" Type="nvarchar" MaxLength="200" />
+          <Property Name="is_codebase" Type="bit" />
+        </EntityType>
+        <EntityType Name="configuration_ref">
+          <Key>
+            <PropertyRef Name="config_id" />
+          </Key>
+          <Property Name="config_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="config_nm" Type="nvarchar" MaxLength="1000" />
+          <Property Name="config_key" Type="nvarchar" MaxLength="1000" />
+          <Property Name="config_dev_value" Type="ntext" />
+          <Property Name="config_dev_int_value" Type="ntext" />
+          <Property Name="config_qa_value" Type="ntext" />
+          <Property Name="config_prod_value" Type="ntext" />
+          <Property Name="is_pdf" Type="bit" />
+          <Property Name="pdfaction" Type="tinyint" />
+          <Property Name="work_item_id" Type="int" />
+          <Property Name="config_type_id" Type="smallint" />
+          <Property Name="config_status_id" Type="smallint" />
+          <Property Name="application_id" Type="smallint" />
+          <Property Name="comments" Type="ntext" />
+          <Property Name="created_dtm" Type="datetime" />
+          <Property Name="created_usr_id" Type="nvarchar" MaxLength="200" />
+          <Property Name="modified_dtm" Type="datetime" />
+          <Property Name="modified_usr_id" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="deployment_environment_ref">
+          <Key>
+            <PropertyRef Name="deployment_environment_id" />
+          </Key>
+          <Property Name="deployment_environment_id" Type="tinyint" Nullable="false" />
+          <Property Name="deployment_environment_nm" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="deployment_mse_environment_ref">
+          <Key>
+            <PropertyRef Name="deployment_mse_environment_id" />
+          </Key>
+          <Property Name="deployment_mse_environment_id" Type="tinyint" Nullable="false" />
+          <Property Name="deployment_mse_environment_nm" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="deployment_type_ref">
+          <Key>
+            <PropertyRef Name="deployment_type_id" />
+          </Key>
+          <Property Name="deployment_type_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="deployment_type_nm" Type="nvarchar" MaxLength="200" />
+          <Property Name="is_smp_deployment" Type="bit" />
+          <Property Name="is_jenkins_deployment" Type="bit" />
+          <Property Name="is_manual_deployment" Type="bit" />
+          <Property Name="is_other_deployment" Type="bit" />
+        </EntityType>
+        <EntityType Name="inventory_ref">
+          <Key>
+            <PropertyRef Name="inventory_id" />
+          </Key>
+          <Property Name="inventory_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="inventory_nm" Type="nvarchar" MaxLength="200" />
+          <Property Name="deployment_environment_id" Type="tinyint" />
+          <Property Name="server_type_id" Type="smallint" />
+          <Property Name="deployment_mse_environment_id" Type="tinyint" />
+          <Property Name="application_id" Type="smallint" />
+          <Property Name="port_number" Type="nvarchar" MaxLength="20" />
+          <Property Name="is_https" Type="bit" />
+          <Property Name="website_nm" Type="nvarchar" MaxLength="100" />
+          <Property Name="virtual_directory" Type="nvarchar" MaxLength="100" />
+          <Property Name="physical_path" Type="nvarchar" MaxLength="200" />
+          <Property Name="validation_interface" Type="nvarchar" MaxLength="200" />
+          <Property Name="auto_validation_url" Type="nvarchar" MaxLength="300" />
+          <Property Name="gtm_name" Type="nvarchar" MaxLength="300" />
+          <Property Name="vip_name" Type="nvarchar" MaxLength="300" />
+          <Property Name="metadata" Type="nvarchar" MaxLength="1000" />
+          <Property Name="comments" Type="ntext" />
+        </EntityType>
+        <EntityType Name="release_ref">
+          <Key>
+            <PropertyRef Name="release_id" />
+          </Key>
+          <Property Name="release_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="release_nm" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="release_descr" Type="nvarchar" MaxLength="1000" />
+          <Property Name="release_dt" Type="datetime" />
+          <Property Name="release_notes_status_id" Type="smallint" />
+          <Property Name="it_validation_status_id" Type="smallint" />
+          <Property Name="status_id" Type="smallint" />
+          <Property Name="comments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="created_dtm" Type="datetime" />
+          <Property Name="created_usr_id" Type="nvarchar" MaxLength="200" />
+          <Property Name="modified_dtm" Type="datetime" />
+          <Property Name="modified_usr_id" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="release_sprint_xref">
+          <Key>
+            <PropertyRef Name="release_sprint_id" />
+          </Key>
+          <Property Name="release_sprint_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="release_id" Type="smallint" />
+          <Property Name="sprint_id" Type="smallint" />
+        </EntityType>
+        <EntityType Name="release_work_item_xref">
+          <Key>
+            <PropertyRef Name="release_work_item_id" />
+          </Key>
+          <Property Name="release_work_item_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="release_id" Type="smallint" />
+          <Property Name="work_item_id" Type="int" />
+          <Property Name="biz_validation_sql" Type="ntext" />
+          <Property Name="biz_validation_comments" Type="ntext" />
+          <Property Name="is_biz_validation_required" Type="bit" />
+          <Property Name="biz_validator_nm" Type="nvarchar" MaxLength="200" />
+          <Property Name="biz_validation_status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="report_part_ref">
+          <Key>
+            <PropertyRef Name="report_part_id" />
+          </Key>
+          <Property Name="report_part_id" Type="tinyint" Nullable="false" />
+          <Property Name="report_part_nm" Type="nvarchar" MaxLength="200" />
+          <Property Name="report_part_type" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="report_ref">
+          <Key>
+            <PropertyRef Name="report_id" />
+          </Key>
+          <Property Name="report_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="report_nm" Type="nvarchar" MaxLength="500" />
+          <Property Name="report_descr" Type="nvarchar" MaxLength="1000" />
+          <Property Name="db_connectionstr" Type="nvarchar" MaxLength="1000" />
+          <Property Name="sql_script" Type="ntext" />
+          <Property Name="is_scheduling" Type="bit" />
+          <Property Name="scheduler_interval_minutes" Type="smallint" />
+          <Property Name="scheduler_output_type" Type="tinyint" />
+          <Property Name="scheduler_email_ids" Type="ntext" />
+          <Property Name="scheduler_last_executed" Type="datetime" />
+          <Property Name="comments" Type="ntext" />
+        </EntityType>
+        <EntityType Name="rfc_detail_ref">
+          <Key>
+            <PropertyRef Name="rfc_detail_id" />
+          </Key>
+          <Property Name="rfc_detail_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="rfc_id" Type="int" />
+          <Property Name="rfc_report_part_id" Type="tinyint" />
+          <Property Name="rfc_detail_key" Type="nvarchar" MaxLength="30" />
+          <Property Name="rfc_detail_nm" Type="ntext" />
+        </EntityType>
+        <EntityType Name="rfc_ref">
+          <Key>
+            <PropertyRef Name="rfc_id" />
+          </Key>
+          <Property Name="rfc_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="rfc_nm" Type="nvarchar" MaxLength="200" />
+          <Property Name="rfc_descr" Type="nvarchar" MaxLength="1000" />
+          <Property Name="rfc_number" Type="nvarchar" MaxLength="100" />
+          <Property Name="release_id" Type="smallint" />
+          <Property Name="rfc_template_id" Type="smallint" />
+          <Property Name="deployment_type_id" Type="smallint" />
+          <Property Name="server_type_id" Type="smallint" />
+          <Property Name="deployment_environment_id" Type="tinyint" />
+          <Property Name="deployment_mse_environment_id" Type="tinyint" />
+          <Property Name="rfc_template_filename" Type="nvarchar" MaxLength="200" />
+          <Property Name="comments" Type="ntext" />
+        </EntityType>
+        <EntityType Name="rfc_template_application_xref">
+          <Key>
+            <PropertyRef Name="rfc_template_application_id" />
+          </Key>
+          <Property Name="rfc_template_application_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="rfc_template_id" Type="smallint" />
+          <Property Name="application_id" Type="smallint" />
+          <Property Name="pdf_file_name" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="rfc_template_detail_ref">
+          <Key>
+            <PropertyRef Name="rfc_template_detail_id" />
+          </Key>
+          <Property Name="rfc_template_detail_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="rfc_template_id" Type="smallint" />
+          <Property Name="rfc_report_part_id" Type="tinyint" />
+          <Property Name="rfc_template_detail_key" Type="nvarchar" MaxLength="30" />
+          <Property Name="rfc_template_detail_nm" Type="ntext" />
+        </EntityType>
+        <EntityType Name="rfc_template_ref">
+          <Key>
+            <PropertyRef Name="rfc_template_id" />
+          </Key>
+          <Property Name="rfc_template_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="rfc_template_nm" Type="nvarchar" MaxLength="1000" />
+          <Property Name="rfc_template_descr" Type="nvarchar(max)" />
+          <Property Name="deployment_type_id" Type="smallint" />
+          <Property Name="server_type_id" Type="smallint" />
+          <Property Name="deployment_environment_id" Type="tinyint" />
+          <Property Name="deployment_mse_environment_id" Type="tinyint" />
+          <Property Name="rfc_template_filename" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="scope_ref">
+          <Key>
+            <PropertyRef Name="scope_id" />
+          </Key>
+          <Property Name="scope_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="scope_nm" Type="nvarchar" MaxLength="200" />
+          <Property Name="is_dev_int" Type="bit" />
+          <Property Name="is_qa" Type="bit" />
+          <Property Name="is_production" Type="bit" />
+        </EntityType>
+        <EntityType Name="server_ref">
+          <Key>
+            <PropertyRef Name="server_id" />
+          </Key>
+          <Property Name="server_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="server_type_id" Type="smallint" Nullable="false" />
+          <Property Name="server_nm" Type="nvarchar" MaxLength="200" />
+          <Property Name="is_dr" Type="bit" />
+        </EntityType>
+        <EntityType Name="server_type_ref">
+          <Key>
+            <PropertyRef Name="server_type_id" />
+          </Key>
+          <Property Name="server_type_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="server_type_nm" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="sprint_ref">
+          <Key>
+            <PropertyRef Name="sprint_id" />
+          </Key>
+          <Property Name="sprint_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="sprint_nm" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="status_ref">
+          <Key>
+            <PropertyRef Name="status_id" />
+          </Key>
+          <Property Name="status_id" Type="smallint" Nullable="false" />
+          <Property Name="status_nm" Type="nvarchar" MaxLength="200" />
+          <Property Name="status_type_id" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="status_type_ref">
+          <Key>
+            <PropertyRef Name="status_type_id" />
+          </Key>
+          <Property Name="status_type_id" Type="tinyint" Nullable="false" />
+          <Property Name="status_type_nm" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sub_type_ref">
+          <Key>
+            <PropertyRef Name="sub_type_id" />
+          </Key>
+          <Property Name="sub_type_id" Type="smallint" Nullable="false" />
+          <Property Name="sub_type_nm" Type="nvarchar" MaxLength="200" />
+          <Property Name="type_id" Type="smallint" />
+        </EntityType>
+        <EntityType Name="type_ref">
+          <Key>
+            <PropertyRef Name="type_id" />
+          </Key>
+          <Property Name="type_id" Type="smallint" Nullable="false" />
+          <Property Name="type_nm" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="work_item_ref">
+          <Key>
+            <PropertyRef Name="work_item_id" />
+          </Key>
+          <Property Name="work_item_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="work_item_ext_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="work_item_title" Type="nvarchar" MaxLength="1000" />
+          <Property Name="sprint_id" Type="smallint" />
+          <Property Name="scope_id" Type="smallint" />
+          <Property Name="comments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="created_dtm" Type="datetime" />
+          <Property Name="created_usr_id" Type="nvarchar" MaxLength="200" />
+          <Property Name="modified_dtm" Type="datetime" />
+          <Property Name="modified_usr_id" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eTrackerDataModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DataModelEntities1" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="api_ref" EntityType="eTrackerDataModel.api_ref" />
+          <EntitySet Name="api_type_ref" EntityType="eTrackerDataModel.api_type_ref" />
+          <EntitySet Name="application_ref" EntityType="eTrackerDataModel.application_ref" />
+          <EntitySet Name="checklist_action_ref" EntityType="eTrackerDataModel.checklist_action_ref" />
+          <EntitySet Name="checklist_action_xref" EntityType="eTrackerDataModel.checklist_action_xref" />
+          <EntitySet Name="checklist_ref" EntityType="eTrackerDataModel.checklist_ref" />
+          <EntitySet Name="checklist_template_ref" EntityType="eTrackerDataModel.checklist_template_ref" />
+          <EntitySet Name="checklist_template_xref" EntityType="eTrackerDataModel.checklist_template_xref" />
+          <EntitySet Name="client_ref" EntityType="eTrackerDataModel.client_ref" />
+          <EntitySet Name="config_type_ref" EntityType="eTrackerDataModel.config_type_ref" />
+          <EntitySet Name="configuration_ref" EntityType="eTrackerDataModel.configuration_ref" />
+          <EntitySet Name="deployment_environment_ref" EntityType="eTrackerDataModel.deployment_environment_ref" />
+          <EntitySet Name="deployment_mse_environment_ref" EntityType="eTrackerDataModel.deployment_mse_environment_ref" />
+          <EntitySet Name="deployment_type_ref" EntityType="eTrackerDataModel.deployment_type_ref" />
+          <EntitySet Name="inventory_ref" EntityType="eTrackerDataModel.inventory_ref" />
+          <EntitySet Name="release_ref" EntityType="eTrackerDataModel.release_ref" />
+          <EntitySet Name="release_sprint_xref" EntityType="eTrackerDataModel.release_sprint_xref" />
+          <EntitySet Name="release_work_item_xref" EntityType="eTrackerDataModel.release_work_item_xref" />
+          <EntitySet Name="report_part_ref" EntityType="eTrackerDataModel.report_part_ref" />
+          <EntitySet Name="report_ref" EntityType="eTrackerDataModel.report_ref" />
+          <EntitySet Name="rfc_detail_ref" EntityType="eTrackerDataModel.rfc_detail_ref" />
+          <EntitySet Name="rfc_ref" EntityType="eTrackerDataModel.rfc_ref" />
+          <EntitySet Name="rfc_template_application_xref" EntityType="eTrackerDataModel.rfc_template_application_xref" />
+          <EntitySet Name="rfc_template_detail_ref" EntityType="eTrackerDataModel.rfc_template_detail_ref" />
+          <EntitySet Name="rfc_template_ref" EntityType="eTrackerDataModel.rfc_template_ref" />
+          <EntitySet Name="scope_ref" EntityType="eTrackerDataModel.scope_ref" />
+          <EntitySet Name="server_ref" EntityType="eTrackerDataModel.server_ref" />
+          <EntitySet Name="server_type_ref" EntityType="eTrackerDataModel.server_type_ref" />
+          <EntitySet Name="sprint_ref" EntityType="eTrackerDataModel.sprint_ref" />
+          <EntitySet Name="status_ref" EntityType="eTrackerDataModel.status_ref" />
+          <EntitySet Name="status_type_ref" EntityType="eTrackerDataModel.status_type_ref" />
+          <EntitySet Name="sub_type_ref" EntityType="eTrackerDataModel.sub_type_ref" />
+          <EntitySet Name="type_ref" EntityType="eTrackerDataModel.type_ref" />
+          <EntitySet Name="work_item_ref" EntityType="eTrackerDataModel.work_item_ref" />
+        </EntityContainer>
+        <EntityType Name="api_ref">
+          <Key>
+            <PropertyRef Name="api_id" />
+          </Key>
+          <Property Type="Int32" Name="api_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="api_name" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="api_type_id" />
+          <Property Type="Int16" Name="client_id" />
+          <Property Type="Int16" Name="application_id" />
+          <Property Type="String" Name="api_dev_url" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_dev_version" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_dev_metadata" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_dev_int_url" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_dev_int_version" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_dev_int_metadata" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_qa_url" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_qa_version" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_qa_metadata" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_prod_url" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_prod_version" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_prod_metadata" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_metadata" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="api_comments" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="api_type_ref">
+          <Key>
+            <PropertyRef Name="api_type_id" />
+          </Key>
+          <Property Type="Int16" Name="api_type_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="api_type_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="application_ref">
+          <Key>
+            <PropertyRef Name="application_id" />
+          </Key>
+          <Property Type="Int16" Name="application_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="application_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="checklist_action_ref">
+          <Key>
+            <PropertyRef Name="checklist_action_id" />
+          </Key>
+          <Property Type="Int32" Name="checklist_action_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="checklist_action_nm" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="checklist_template_id" />
+          <Property Type="Int16" Name="sub_type_id" />
+          <Property Type="String" Name="comments" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="created_dtm" Precision="3" />
+          <Property Type="String" Name="created_usr_id" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="modified_dtm" Precision="3" />
+          <Property Type="String" Name="modified_usr_id" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="checklist_action_xref">
+          <Key>
+            <PropertyRef Name="checklist_action_xref_id" />
+          </Key>
+          <Property Type="Int32" Name="checklist_action_xref_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="checklist_action_id" />
+          <Property Type="Int32" Name="checklist_id" Nullable="false" />
+          <Property Type="Int16" Name="status_id" />
+          <Property Type="String" Name="powershell_script" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="powershell_script_execution_comments" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="powershell_script_timedout" />
+          <Property Type="Int16" Name="priority_order" />
+          <Property Type="String" Name="comments" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="checklist_ref">
+          <Key>
+            <PropertyRef Name="checklist_id" />
+          </Key>
+          <Property Type="Int32" Name="checklist_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="checklist_nm" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="sub_type_id" />
+          <Property Type="String" Name="default_powershell_script" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="default_powershell_script_timedout" />
+        </EntityType>
+        <EntityType Name="checklist_template_ref">
+          <Key>
+            <PropertyRef Name="checklist_template_id" />
+          </Key>
+          <Property Type="Int16" Name="checklist_template_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="checklist_template_nm" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="sub_type_id" />
+        </EntityType>
+        <EntityType Name="checklist_template_xref">
+          <Key>
+            <PropertyRef Name="checklist_template_xref_id" />
+          </Key>
+          <Property Type="Int32" Name="checklist_template_xref_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="checklist_template_id" Nullable="false" />
+          <Property Type="Int32" Name="checklist_id" Nullable="false" />
+          <Property Type="String" Name="powershell_script" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="powershell_script_timedout" />
+          <Property Type="Int16" Name="priority_order" />
+        </EntityType>
+        <EntityType Name="client_ref">
+          <Key>
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Type="Int16" Name="client_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="client_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="config_type_ref">
+          <Key>
+            <PropertyRef Name="config_type_id" />
+          </Key>
+          <Property Type="Int16" Name="config_type_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="config_type_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="is_codebase" />
+        </EntityType>
+        <EntityType Name="configuration_ref">
+          <Key>
+            <PropertyRef Name="config_id" />
+          </Key>
+          <Property Type="Int32" Name="config_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="config_nm" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="config_key" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="config_dev_value" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="config_dev_int_value" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="config_qa_value" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="config_prod_value" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="is_pdf" />
+          <Property Type="Byte" Name="pdfaction" />
+          <Property Type="Int32" Name="work_item_id" />
+          <Property Type="Int16" Name="config_type_id" />
+          <Property Type="Int16" Name="config_status_id" />
+          <Property Type="Int16" Name="application_id" />
+          <Property Type="String" Name="comments" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="created_dtm" Precision="3" />
+          <Property Type="String" Name="created_usr_id" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="modified_dtm" Precision="3" />
+          <Property Type="String" Name="modified_usr_id" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="deployment_environment_ref">
+          <Key>
+            <PropertyRef Name="deployment_environment_id" />
+          </Key>
+          <Property Type="Byte" Name="deployment_environment_id" Nullable="false" />
+          <Property Type="String" Name="deployment_environment_nm" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="deployment_mse_environment_ref">
+          <Key>
+            <PropertyRef Name="deployment_mse_environment_id" />
+          </Key>
+          <Property Type="Byte" Name="deployment_mse_environment_id" Nullable="false" />
+          <Property Type="String" Name="deployment_mse_environment_nm" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="deployment_type_ref">
+          <Key>
+            <PropertyRef Name="deployment_type_id" />
+          </Key>
+          <Property Type="Int16" Name="deployment_type_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="deployment_type_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="is_smp_deployment" />
+          <Property Type="Boolean" Name="is_jenkins_deployment" />
+          <Property Type="Boolean" Name="is_manual_deployment" />
+          <Property Type="Boolean" Name="is_other_deployment" />
+        </EntityType>
+        <EntityType Name="inventory_ref">
+          <Key>
+            <PropertyRef Name="inventory_id" />
+          </Key>
+          <Property Type="Int16" Name="inventory_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="inventory_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="deployment_environment_id" />
+          <Property Type="Int16" Name="server_type_id" />
+          <Property Type="Byte" Name="deployment_mse_environment_id" />
+          <Property Type="Int16" Name="application_id" />
+          <Property Type="String" Name="port_number" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="is_https" />
+          <Property Type="String" Name="website_nm" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="virtual_directory" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="physical_path" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="validation_interface" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="auto_validation_url" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="gtm_name" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="vip_name" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="metadata" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="comments" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="release_ref">
+          <Key>
+            <PropertyRef Name="release_id" />
+          </Key>
+          <Property Type="Int16" Name="release_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="release_nm" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="release_descr" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="release_dt" Precision="3" />
+          <Property Type="Int16" Name="release_notes_status_id" />
+          <Property Type="Int16" Name="it_validation_status_id" />
+          <Property Type="Int16" Name="status_id" />
+          <Property Type="String" Name="comments" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="created_dtm" Precision="3" />
+          <Property Type="String" Name="created_usr_id" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="modified_dtm" Precision="3" />
+          <Property Type="String" Name="modified_usr_id" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="release_sprint_xref">
+          <Key>
+            <PropertyRef Name="release_sprint_id" />
+          </Key>
+          <Property Type="Int32" Name="release_sprint_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="release_id" />
+          <Property Type="Int16" Name="sprint_id" />
+        </EntityType>
+        <EntityType Name="release_work_item_xref">
+          <Key>
+            <PropertyRef Name="release_work_item_id" />
+          </Key>
+          <Property Type="Int32" Name="release_work_item_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="release_id" />
+          <Property Type="Int32" Name="work_item_id" />
+          <Property Type="String" Name="biz_validation_sql" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="biz_validation_comments" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="is_biz_validation_required" />
+          <Property Type="String" Name="biz_validator_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="biz_validation_status" />
+        </EntityType>
+        <EntityType Name="report_part_ref">
+          <Key>
+            <PropertyRef Name="report_part_id" />
+          </Key>
+          <Property Type="Byte" Name="report_part_id" Nullable="false" />
+          <Property Type="String" Name="report_part_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="report_part_type" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="report_ref">
+          <Key>
+            <PropertyRef Name="report_id" />
+          </Key>
+          <Property Type="Int16" Name="report_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="report_nm" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="report_descr" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="db_connectionstr" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="sql_script" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="is_scheduling" />
+          <Property Type="Int16" Name="scheduler_interval_minutes" />
+          <Property Type="Byte" Name="scheduler_output_type" />
+          <Property Type="String" Name="scheduler_email_ids" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="scheduler_last_executed" Precision="3" />
+          <Property Type="String" Name="comments" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="rfc_detail_ref">
+          <Key>
+            <PropertyRef Name="rfc_detail_id" />
+          </Key>
+          <Property Type="Int32" Name="rfc_detail_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="rfc_id" />
+          <Property Type="Byte" Name="rfc_report_part_id" />
+          <Property Type="String" Name="rfc_detail_key" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="rfc_detail_nm" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="rfc_ref">
+          <Key>
+            <PropertyRef Name="rfc_id" />
+          </Key>
+          <Property Type="Int32" Name="rfc_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="rfc_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="rfc_descr" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="rfc_number" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="release_id" />
+          <Property Type="Int16" Name="rfc_template_id" />
+          <Property Type="Int16" Name="deployment_type_id" />
+          <Property Type="Int16" Name="server_type_id" />
+          <Property Type="Byte" Name="deployment_environment_id" />
+          <Property Type="Byte" Name="deployment_mse_environment_id" />
+          <Property Type="String" Name="rfc_template_filename" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="comments" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="rfc_template_application_xref">
+          <Key>
+            <PropertyRef Name="rfc_template_application_id" />
+          </Key>
+          <Property Type="Int16" Name="rfc_template_application_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="rfc_template_id" />
+          <Property Type="Int16" Name="application_id" />
+          <Property Type="String" Name="pdf_file_name" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="rfc_template_detail_ref">
+          <Key>
+            <PropertyRef Name="rfc_template_detail_id" />
+          </Key>
+          <Property Type="Int16" Name="rfc_template_detail_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="rfc_template_id" />
+          <Property Type="Byte" Name="rfc_report_part_id" />
+          <Property Type="String" Name="rfc_template_detail_key" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="rfc_template_detail_nm" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="rfc_template_ref">
+          <Key>
+            <PropertyRef Name="rfc_template_id" />
+          </Key>
+          <Property Type="Int16" Name="rfc_template_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="rfc_template_nm" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="rfc_template_descr" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="deployment_type_id" />
+          <Property Type="Int16" Name="server_type_id" />
+          <Property Type="Byte" Name="deployment_environment_id" />
+          <Property Type="Byte" Name="deployment_mse_environment_id" />
+          <Property Type="String" Name="rfc_template_filename" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="scope_ref">
+          <Key>
+            <PropertyRef Name="scope_id" />
+          </Key>
+          <Property Type="Int16" Name="scope_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="scope_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="is_dev_int" />
+          <Property Type="Boolean" Name="is_qa" />
+          <Property Type="Boolean" Name="is_production" />
+        </EntityType>
+        <EntityType Name="server_ref">
+          <Key>
+            <PropertyRef Name="server_id" />
+          </Key>
+          <Property Type="Int16" Name="server_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="server_type_id" Nullable="false" />
+          <Property Type="String" Name="server_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="is_dr" />
+        </EntityType>
+        <EntityType Name="server_type_ref">
+          <Key>
+            <PropertyRef Name="server_type_id" />
+          </Key>
+          <Property Type="Int16" Name="server_type_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="server_type_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sprint_ref">
+          <Key>
+            <PropertyRef Name="sprint_id" />
+          </Key>
+          <Property Type="Int16" Name="sprint_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="sprint_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="status_ref">
+          <Key>
+            <PropertyRef Name="status_id" />
+          </Key>
+          <Property Type="Int16" Name="status_id" Nullable="false" />
+          <Property Type="String" Name="status_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="status_type_id" />
+        </EntityType>
+        <EntityType Name="status_type_ref">
+          <Key>
+            <PropertyRef Name="status_type_id" />
+          </Key>
+          <Property Type="Byte" Name="status_type_id" Nullable="false" />
+          <Property Type="String" Name="status_type_nm" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sub_type_ref">
+          <Key>
+            <PropertyRef Name="sub_type_id" />
+          </Key>
+          <Property Type="Int16" Name="sub_type_id" Nullable="false" />
+          <Property Type="String" Name="sub_type_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="type_id" />
+        </EntityType>
+        <EntityType Name="type_ref">
+          <Key>
+            <PropertyRef Name="type_id" />
+          </Key>
+          <Property Type="Int16" Name="type_id" Nullable="false" />
+          <Property Type="String" Name="type_nm" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="work_item_ref">
+          <Key>
+            <PropertyRef Name="work_item_id" />
+          </Key>
+          <Property Type="Int32" Name="work_item_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="work_item_ext_id" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="work_item_title" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="sprint_id" />
+          <Property Type="Int16" Name="scope_id" />
+          <Property Type="String" Name="comments" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="created_dtm" Precision="3" />
+          <Property Type="String" Name="created_usr_id" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="modified_dtm" Precision="3" />
+          <Property Type="String" Name="modified_usr_id" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="DataModelEntities1">
+          <EntitySetMapping Name="api_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.api_ref">
+              <MappingFragment StoreEntitySet="api_ref">
+                <ScalarProperty Name="api_comments" ColumnName="api_comments" />
+                <ScalarProperty Name="api_metadata" ColumnName="api_metadata" />
+                <ScalarProperty Name="api_prod_metadata" ColumnName="api_prod_metadata" />
+                <ScalarProperty Name="api_prod_version" ColumnName="api_prod_version" />
+                <ScalarProperty Name="api_prod_url" ColumnName="api_prod_url" />
+                <ScalarProperty Name="api_qa_metadata" ColumnName="api_qa_metadata" />
+                <ScalarProperty Name="api_qa_version" ColumnName="api_qa_version" />
+                <ScalarProperty Name="api_qa_url" ColumnName="api_qa_url" />
+                <ScalarProperty Name="api_dev_int_metadata" ColumnName="api_dev_int_metadata" />
+                <ScalarProperty Name="api_dev_int_version" ColumnName="api_dev_int_version" />
+                <ScalarProperty Name="api_dev_int_url" ColumnName="api_dev_int_url" />
+                <ScalarProperty Name="api_dev_metadata" ColumnName="api_dev_metadata" />
+                <ScalarProperty Name="api_dev_version" ColumnName="api_dev_version" />
+                <ScalarProperty Name="api_dev_url" ColumnName="api_dev_url" />
+                <ScalarProperty Name="application_id" ColumnName="application_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="api_type_id" ColumnName="api_type_id" />
+                <ScalarProperty Name="api_name" ColumnName="api_name" />
+                <ScalarProperty Name="api_id" ColumnName="api_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="api_type_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.api_type_ref">
+              <MappingFragment StoreEntitySet="api_type_ref">
+                <ScalarProperty Name="api_type_nm" ColumnName="api_type_nm" />
+                <ScalarProperty Name="api_type_id" ColumnName="api_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="application_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.application_ref">
+              <MappingFragment StoreEntitySet="application_ref">
+                <ScalarProperty Name="application_nm" ColumnName="application_nm" />
+                <ScalarProperty Name="application_id" ColumnName="application_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="checklist_action_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.checklist_action_ref">
+              <MappingFragment StoreEntitySet="checklist_action_ref">
+                <ScalarProperty Name="modified_usr_id" ColumnName="modified_usr_id" />
+                <ScalarProperty Name="modified_dtm" ColumnName="modified_dtm" />
+                <ScalarProperty Name="created_usr_id" ColumnName="created_usr_id" />
+                <ScalarProperty Name="created_dtm" ColumnName="created_dtm" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="sub_type_id" ColumnName="sub_type_id" />
+                <ScalarProperty Name="checklist_template_id" ColumnName="checklist_template_id" />
+                <ScalarProperty Name="checklist_action_nm" ColumnName="checklist_action_nm" />
+                <ScalarProperty Name="checklist_action_id" ColumnName="checklist_action_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="checklist_action_xref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.checklist_action_xref">
+              <MappingFragment StoreEntitySet="checklist_action_xref">
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="priority_order" ColumnName="priority_order" />
+                <ScalarProperty Name="powershell_script_timedout" ColumnName="powershell_script_timedout" />
+                <ScalarProperty Name="powershell_script_execution_comments" ColumnName="powershell_script_execution_comments" />
+                <ScalarProperty Name="powershell_script" ColumnName="powershell_script" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="checklist_id" ColumnName="checklist_id" />
+                <ScalarProperty Name="checklist_action_id" ColumnName="checklist_action_id" />
+                <ScalarProperty Name="checklist_action_xref_id" ColumnName="checklist_action_xref_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="checklist_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.checklist_ref">
+              <MappingFragment StoreEntitySet="checklist_ref">
+                <ScalarProperty Name="default_powershell_script_timedout" ColumnName="default_powershell_script_timedout" />
+                <ScalarProperty Name="default_powershell_script" ColumnName="default_powershell_script" />
+                <ScalarProperty Name="sub_type_id" ColumnName="sub_type_id" />
+                <ScalarProperty Name="checklist_nm" ColumnName="checklist_nm" />
+                <ScalarProperty Name="checklist_id" ColumnName="checklist_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="checklist_template_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.checklist_template_ref">
+              <MappingFragment StoreEntitySet="checklist_template_ref">
+                <ScalarProperty Name="sub_type_id" ColumnName="sub_type_id" />
+                <ScalarProperty Name="checklist_template_nm" ColumnName="checklist_template_nm" />
+                <ScalarProperty Name="checklist_template_id" ColumnName="checklist_template_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="checklist_template_xref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.checklist_template_xref">
+              <MappingFragment StoreEntitySet="checklist_template_xref">
+                <ScalarProperty Name="priority_order" ColumnName="priority_order" />
+                <ScalarProperty Name="powershell_script_timedout" ColumnName="powershell_script_timedout" />
+                <ScalarProperty Name="powershell_script" ColumnName="powershell_script" />
+                <ScalarProperty Name="checklist_id" ColumnName="checklist_id" />
+                <ScalarProperty Name="checklist_template_id" ColumnName="checklist_template_id" />
+                <ScalarProperty Name="checklist_template_xref_id" ColumnName="checklist_template_xref_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.client_ref">
+              <MappingFragment StoreEntitySet="client_ref">
+                <ScalarProperty Name="client_nm" ColumnName="client_nm" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="config_type_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.config_type_ref">
+              <MappingFragment StoreEntitySet="config_type_ref">
+                <ScalarProperty Name="is_codebase" ColumnName="is_codebase" />
+                <ScalarProperty Name="config_type_nm" ColumnName="config_type_nm" />
+                <ScalarProperty Name="config_type_id" ColumnName="config_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="configuration_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.configuration_ref">
+              <MappingFragment StoreEntitySet="configuration_ref">
+                <ScalarProperty Name="modified_usr_id" ColumnName="modified_usr_id" />
+                <ScalarProperty Name="modified_dtm" ColumnName="modified_dtm" />
+                <ScalarProperty Name="created_usr_id" ColumnName="created_usr_id" />
+                <ScalarProperty Name="created_dtm" ColumnName="created_dtm" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="application_id" ColumnName="application_id" />
+                <ScalarProperty Name="config_status_id" ColumnName="config_status_id" />
+                <ScalarProperty Name="config_type_id" ColumnName="config_type_id" />
+                <ScalarProperty Name="work_item_id" ColumnName="work_item_id" />
+                <ScalarProperty Name="pdfaction" ColumnName="pdfaction" />
+                <ScalarProperty Name="is_pdf" ColumnName="is_pdf" />
+                <ScalarProperty Name="config_prod_value" ColumnName="config_prod_value" />
+                <ScalarProperty Name="config_qa_value" ColumnName="config_qa_value" />
+                <ScalarProperty Name="config_dev_int_value" ColumnName="config_dev_int_value" />
+                <ScalarProperty Name="config_dev_value" ColumnName="config_dev_value" />
+                <ScalarProperty Name="config_key" ColumnName="config_key" />
+                <ScalarProperty Name="config_nm" ColumnName="config_nm" />
+                <ScalarProperty Name="config_id" ColumnName="config_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deployment_environment_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.deployment_environment_ref">
+              <MappingFragment StoreEntitySet="deployment_environment_ref">
+                <ScalarProperty Name="deployment_environment_nm" ColumnName="deployment_environment_nm" />
+                <ScalarProperty Name="deployment_environment_id" ColumnName="deployment_environment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deployment_mse_environment_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.deployment_mse_environment_ref">
+              <MappingFragment StoreEntitySet="deployment_mse_environment_ref">
+                <ScalarProperty Name="deployment_mse_environment_nm" ColumnName="deployment_mse_environment_nm" />
+                <ScalarProperty Name="deployment_mse_environment_id" ColumnName="deployment_mse_environment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deployment_type_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.deployment_type_ref">
+              <MappingFragment StoreEntitySet="deployment_type_ref">
+                <ScalarProperty Name="is_other_deployment" ColumnName="is_other_deployment" />
+                <ScalarProperty Name="is_manual_deployment" ColumnName="is_manual_deployment" />
+                <ScalarProperty Name="is_jenkins_deployment" ColumnName="is_jenkins_deployment" />
+                <ScalarProperty Name="is_smp_deployment" ColumnName="is_smp_deployment" />
+                <ScalarProperty Name="deployment_type_nm" ColumnName="deployment_type_nm" />
+                <ScalarProperty Name="deployment_type_id" ColumnName="deployment_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inventory_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.inventory_ref">
+              <MappingFragment StoreEntitySet="inventory_ref">
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="metadata" ColumnName="metadata" />
+                <ScalarProperty Name="vip_name" ColumnName="vip_name" />
+                <ScalarProperty Name="gtm_name" ColumnName="gtm_name" />
+                <ScalarProperty Name="auto_validation_url" ColumnName="auto_validation_url" />
+                <ScalarProperty Name="validation_interface" ColumnName="validation_interface" />
+                <ScalarProperty Name="physical_path" ColumnName="physical_path" />
+                <ScalarProperty Name="virtual_directory" ColumnName="virtual_directory" />
+                <ScalarProperty Name="website_nm" ColumnName="website_nm" />
+                <ScalarProperty Name="is_https" ColumnName="is_https" />
+                <ScalarProperty Name="port_number" ColumnName="port_number" />
+                <ScalarProperty Name="application_id" ColumnName="application_id" />
+                <ScalarProperty Name="deployment_mse_environment_id" ColumnName="deployment_mse_environment_id" />
+                <ScalarProperty Name="server_type_id" ColumnName="server_type_id" />
+                <ScalarProperty Name="deployment_environment_id" ColumnName="deployment_environment_id" />
+                <ScalarProperty Name="inventory_nm" ColumnName="inventory_nm" />
+                <ScalarProperty Name="inventory_id" ColumnName="inventory_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="release_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.release_ref">
+              <MappingFragment StoreEntitySet="release_ref">
+                <ScalarProperty Name="modified_usr_id" ColumnName="modified_usr_id" />
+                <ScalarProperty Name="modified_dtm" ColumnName="modified_dtm" />
+                <ScalarProperty Name="created_usr_id" ColumnName="created_usr_id" />
+                <ScalarProperty Name="created_dtm" ColumnName="created_dtm" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="it_validation_status_id" ColumnName="it_validation_status_id" />
+                <ScalarProperty Name="release_notes_status_id" ColumnName="release_notes_status_id" />
+                <ScalarProperty Name="release_dt" ColumnName="release_dt" />
+                <ScalarProperty Name="release_descr" ColumnName="release_descr" />
+                <ScalarProperty Name="release_nm" ColumnName="release_nm" />
+                <ScalarProperty Name="release_id" ColumnName="release_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="release_sprint_xref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.release_sprint_xref">
+              <MappingFragment StoreEntitySet="release_sprint_xref">
+                <ScalarProperty Name="sprint_id" ColumnName="sprint_id" />
+                <ScalarProperty Name="release_id" ColumnName="release_id" />
+                <ScalarProperty Name="release_sprint_id" ColumnName="release_sprint_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="release_work_item_xref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.release_work_item_xref">
+              <MappingFragment StoreEntitySet="release_work_item_xref">
+                <ScalarProperty Name="biz_validation_status" ColumnName="biz_validation_status" />
+                <ScalarProperty Name="biz_validator_nm" ColumnName="biz_validator_nm" />
+                <ScalarProperty Name="is_biz_validation_required" ColumnName="is_biz_validation_required" />
+                <ScalarProperty Name="biz_validation_comments" ColumnName="biz_validation_comments" />
+                <ScalarProperty Name="biz_validation_sql" ColumnName="biz_validation_sql" />
+                <ScalarProperty Name="work_item_id" ColumnName="work_item_id" />
+                <ScalarProperty Name="release_id" ColumnName="release_id" />
+                <ScalarProperty Name="release_work_item_id" ColumnName="release_work_item_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="report_part_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.report_part_ref">
+              <MappingFragment StoreEntitySet="report_part_ref">
+                <ScalarProperty Name="report_part_type" ColumnName="report_part_type" />
+                <ScalarProperty Name="report_part_nm" ColumnName="report_part_nm" />
+                <ScalarProperty Name="report_part_id" ColumnName="report_part_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="report_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.report_ref">
+              <MappingFragment StoreEntitySet="report_ref">
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="scheduler_last_executed" ColumnName="scheduler_last_executed" />
+                <ScalarProperty Name="scheduler_email_ids" ColumnName="scheduler_email_ids" />
+                <ScalarProperty Name="scheduler_output_type" ColumnName="scheduler_output_type" />
+                <ScalarProperty Name="scheduler_interval_minutes" ColumnName="scheduler_interval_minutes" />
+                <ScalarProperty Name="is_scheduling" ColumnName="is_scheduling" />
+                <ScalarProperty Name="sql_script" ColumnName="sql_script" />
+                <ScalarProperty Name="db_connectionstr" ColumnName="db_connectionstr" />
+                <ScalarProperty Name="report_descr" ColumnName="report_descr" />
+                <ScalarProperty Name="report_nm" ColumnName="report_nm" />
+                <ScalarProperty Name="report_id" ColumnName="report_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rfc_detail_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.rfc_detail_ref">
+              <MappingFragment StoreEntitySet="rfc_detail_ref">
+                <ScalarProperty Name="rfc_detail_nm" ColumnName="rfc_detail_nm" />
+                <ScalarProperty Name="rfc_detail_key" ColumnName="rfc_detail_key" />
+                <ScalarProperty Name="rfc_report_part_id" ColumnName="rfc_report_part_id" />
+                <ScalarProperty Name="rfc_id" ColumnName="rfc_id" />
+                <ScalarProperty Name="rfc_detail_id" ColumnName="rfc_detail_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rfc_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.rfc_ref">
+              <MappingFragment StoreEntitySet="rfc_ref">
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="rfc_template_filename" ColumnName="rfc_template_filename" />
+                <ScalarProperty Name="deployment_mse_environment_id" ColumnName="deployment_mse_environment_id" />
+                <ScalarProperty Name="deployment_environment_id" ColumnName="deployment_environment_id" />
+                <ScalarProperty Name="server_type_id" ColumnName="server_type_id" />
+                <ScalarProperty Name="deployment_type_id" ColumnName="deployment_type_id" />
+                <ScalarProperty Name="rfc_template_id" ColumnName="rfc_template_id" />
+                <ScalarProperty Name="release_id" ColumnName="release_id" />
+                <ScalarProperty Name="rfc_number" ColumnName="rfc_number" />
+                <ScalarProperty Name="rfc_descr" ColumnName="rfc_descr" />
+                <ScalarProperty Name="rfc_nm" ColumnName="rfc_nm" />
+                <ScalarProperty Name="rfc_id" ColumnName="rfc_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rfc_template_application_xref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.rfc_template_application_xref">
+              <MappingFragment StoreEntitySet="rfc_template_application_xref">
+                <ScalarProperty Name="pdf_file_name" ColumnName="pdf_file_name" />
+                <ScalarProperty Name="application_id" ColumnName="application_id" />
+                <ScalarProperty Name="rfc_template_id" ColumnName="rfc_template_id" />
+                <ScalarProperty Name="rfc_template_application_id" ColumnName="rfc_template_application_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rfc_template_detail_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.rfc_template_detail_ref">
+              <MappingFragment StoreEntitySet="rfc_template_detail_ref">
+                <ScalarProperty Name="rfc_template_detail_nm" ColumnName="rfc_template_detail_nm" />
+                <ScalarProperty Name="rfc_template_detail_key" ColumnName="rfc_template_detail_key" />
+                <ScalarProperty Name="rfc_report_part_id" ColumnName="rfc_report_part_id" />
+                <ScalarProperty Name="rfc_template_id" ColumnName="rfc_template_id" />
+                <ScalarProperty Name="rfc_template_detail_id" ColumnName="rfc_template_detail_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rfc_template_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.rfc_template_ref">
+              <MappingFragment StoreEntitySet="rfc_template_ref">
+                <ScalarProperty Name="rfc_template_filename" ColumnName="rfc_template_filename" />
+                <ScalarProperty Name="deployment_mse_environment_id" ColumnName="deployment_mse_environment_id" />
+                <ScalarProperty Name="deployment_environment_id" ColumnName="deployment_environment_id" />
+                <ScalarProperty Name="server_type_id" ColumnName="server_type_id" />
+                <ScalarProperty Name="deployment_type_id" ColumnName="deployment_type_id" />
+                <ScalarProperty Name="rfc_template_descr" ColumnName="rfc_template_descr" />
+                <ScalarProperty Name="rfc_template_nm" ColumnName="rfc_template_nm" />
+                <ScalarProperty Name="rfc_template_id" ColumnName="rfc_template_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="scope_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.scope_ref">
+              <MappingFragment StoreEntitySet="scope_ref">
+                <ScalarProperty Name="is_production" ColumnName="is_production" />
+                <ScalarProperty Name="is_qa" ColumnName="is_qa" />
+                <ScalarProperty Name="is_dev_int" ColumnName="is_dev_int" />
+                <ScalarProperty Name="scope_nm" ColumnName="scope_nm" />
+                <ScalarProperty Name="scope_id" ColumnName="scope_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="server_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.server_ref">
+              <MappingFragment StoreEntitySet="server_ref">
+                <ScalarProperty Name="is_dr" ColumnName="is_dr" />
+                <ScalarProperty Name="server_nm" ColumnName="server_nm" />
+                <ScalarProperty Name="server_type_id" ColumnName="server_type_id" />
+                <ScalarProperty Name="server_id" ColumnName="server_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="server_type_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.server_type_ref">
+              <MappingFragment StoreEntitySet="server_type_ref">
+                <ScalarProperty Name="server_type_nm" ColumnName="server_type_nm" />
+                <ScalarProperty Name="server_type_id" ColumnName="server_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sprint_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.sprint_ref">
+              <MappingFragment StoreEntitySet="sprint_ref">
+                <ScalarProperty Name="sprint_nm" ColumnName="sprint_nm" />
+                <ScalarProperty Name="sprint_id" ColumnName="sprint_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.status_ref">
+              <MappingFragment StoreEntitySet="status_ref">
+                <ScalarProperty Name="status_type_id" ColumnName="status_type_id" />
+                <ScalarProperty Name="status_nm" ColumnName="status_nm" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status_type_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.status_type_ref">
+              <MappingFragment StoreEntitySet="status_type_ref">
+                <ScalarProperty Name="status_type_nm" ColumnName="status_type_nm" />
+                <ScalarProperty Name="status_type_id" ColumnName="status_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sub_type_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.sub_type_ref">
+              <MappingFragment StoreEntitySet="sub_type_ref">
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="sub_type_nm" ColumnName="sub_type_nm" />
+                <ScalarProperty Name="sub_type_id" ColumnName="sub_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.type_ref">
+              <MappingFragment StoreEntitySet="type_ref">
+                <ScalarProperty Name="type_nm" ColumnName="type_nm" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="work_item_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.work_item_ref">
+              <MappingFragment StoreEntitySet="work_item_ref">
+                <ScalarProperty Name="modified_usr_id" ColumnName="modified_usr_id" />
+                <ScalarProperty Name="modified_dtm" ColumnName="modified_dtm" />
+                <ScalarProperty Name="created_usr_id" ColumnName="created_usr_id" />
+                <ScalarProperty Name="created_dtm" ColumnName="created_dtm" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="scope_id" ColumnName="scope_id" />
+                <ScalarProperty Name="sprint_id" ColumnName="sprint_id" />
+                <ScalarProperty Name="work_item_title" ColumnName="work_item_title" />
+                <ScalarProperty Name="work_item_ext_id" ColumnName="work_item_ext_id" />
+                <ScalarProperty Name="work_item_id" ColumnName="work_item_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

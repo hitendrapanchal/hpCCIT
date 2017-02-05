@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "hpCCIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <script src="~/Scripts/WorkItemController.js"></script>
+
+
+<div ng-controller="WorkItemController" id="div11">
+
+<div class="container" style="padding-top: 30px;">
+    <h1 style="text-align:center" class="page-header">Work Item Tracker</h1>
+</div>
+
+<div class="container" id="body">
+
+    <div class="row">
+        <div class="col-md-1">
+            <span ng-click="AddNew();" class="btn btn-success">Add Work Item</span>
+        </div>
+        <div class="col-md-11">
+                <span ng-click="SearchModal();" class="btn btn-info pull-right">Search</span>
+        </div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-md-12">
+            <div ui-grid="gridOptions1" ui-grid-edit ui-grid-selection ui-grid-exporter class="grid" style="height:450px;" ></div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <script type="text/ng-template" id="myModalContent.html">
+    <form name="myform">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">Work Item Tracker</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+
+                <div class="col-xs-2 {{dynamicCSS.has_success_error}}">
+                    <label class="control-label">Work Item *</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.work_item_ext_id" ng-blur="onblur('txtWorkItem', tmp_data.work_item_ext_id);"  ng-disabled="IsEdit" required/>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Sprint</label>
+                    <select class="form-control" id="dn_sprint" ng-model="selecteddata.sprint" ng-options="sprint_ref.sprint_nm for sprint_ref in startupdata.sprints" required>
+                    <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Scope</label>
+                    <select class="form-control" id="dn_scope" ng-model="selecteddata.scope" ng-options="scope_ref.scope_nm for scope_ref in startupdata.scopes" required>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-6">
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-12">
+                    <label class="control-label">Title</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data.work_item_title" required/>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Comments</label>
+            <textarea class="form-control" name="review" rows="4" ng-model="tmp_data.comments"></textarea>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok(validation.isvalid)" ng-disabled="myform.$invalid">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+  </form>
+    </script>
+
+</div>
+
+</div>

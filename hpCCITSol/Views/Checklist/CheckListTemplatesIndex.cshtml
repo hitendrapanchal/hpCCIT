@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "hpCCIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Scripts/CheckListTemplateController.js"></script>
+
+
+<div ng-controller="CheckListTemplateController" id="div11">
+
+    <div class="container" style="padding-top: 30px;">
+        <h1 style="text-align: center" class="page-header">CheckList Templates</h1>
+    </div>
+
+    <div class="container" id="body">
+
+        <div class="row">
+            <div class="col-md-6">
+                <span ng-click="AddNew();" class="btn btn-success">Add New Template</span>
+            </div>
+            <div class="col-md-6">
+                <a href="/CheckList/CheckList" class="btn btn-info pull-right">Check List Items</a>
+            </div>
+        </div>
+        <p></p>
+        <div class="row">
+            <div class="col-md-12">
+                <div ui-grid="gridOptions" ui-grid-edit ui-grid-selection ui-grid-exporter class="grid" style="height: 400px;"></div>
+            </div>
+        </div>
+        <br />
+
+    </div>
+
+    <div class="container">
+        <script type="text/ng-template" id="myModalContent.html">
+    <form name="myform">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">Template</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+
+                <div class="col-xs-8">
+                    <label class="control-label">Template Name</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data.checklist_template_nm" required/>
+                </div>
+                <div class="col-xs-4">
+                    <label class="control-label">Sub Types</label>
+                    <select class="form-control" id="dn_subtype" ng-model="tmp_data.sub_type_id" ng-options="sub_type_ref.sub_type_id as sub_type_ref.sub_type_nm for sub_type_ref in startupdata.sub_type_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Comments</label>
+            <textarea class="form-control" name="review" rows="4" ng-model="tmp_data.comments"></textarea>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok(true)" ng-disabled="myform.$invalid">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+        </script>
+
+    </div>
+
+
+
+
+    <div class="container">
+        <script type="text/ng-template" id="myTemplateMapping.html">
+        <div class="modal-header bg-info">
+                <h3 class="modal-title">Mapping</h3>
+        </div>
+        <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label">Template Name : {{TemaplateInfo[0].checklist_template_nm}}</label>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div ui-grid="gridOptionsCheckListAction" ui-grid-edit ui-grid-selection  style="height:300px;" class="grid"></div>
+                    </div>
+                    <div class="col-md-7">
+                        <div ui-grid="gridOptionsCheckListTempalte" ui-grid-edit ui-grid-selection style="height:300px;" class="grid" draggable="true"></div>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 10px;">
+                    <div class="col-md-5">
+                        <span class="label label-success">Select Item(s) to add</span>
+                    </div>
+                    <div class="col-md-7">
+                        <span class="label label-danger">Select Item(s) to remove</span>
+                    </div>
+                </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success"  type="button" ng-click="SaveMapping()">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Close</button>
+        </div>
+        </script>
+
+    </div>
+
+
+    <div class="container">
+        <script type="text/ng-template" id="Model_template_xref_id_Edit.html">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">Template Item : Edit</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+
+                <div class="col-xs-8">
+                    <label class="control-label">Check List Name : {{checklist_nm}}</label>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-12">
+                    <label class="control-label">Powershell Script</label>
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_data_chklist_xref.powershell_script"></textarea>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-3">
+                    <label class="control-label">PS Timeout</label>
+                    <input type="number" class="form-control" placeholder='Time out in ms' ng-model="tmp_data_chklist_xref.powershell_script_timedout"/>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Priority</label>
+                    <input type="number" class="form-control"  ng-model="tmp_data_chklist_xref.priority_order"/>
+                </div>
+                <div class="col-xs-7">
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok(true)">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+        </script>
+
+    </div>
+
+
+
+</div>

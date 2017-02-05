@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "hpCCIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <script src="~/Scripts/ConfigurationController.js"></script>
+
+
+<div ng-controller="myController" id="div11" >
+
+<div class="container" style="padding-top: 30px;">
+    <h1 style="text-align:center" class="page-header">Configuration Tracker</h1>
+</div>
+
+<div class="container" id="body">
+
+    <div class="row">
+        <div class="col-md-1">
+            <span ng-click="AddNew();" class="btn btn-success">Add Configuration</span>
+        </div>
+        <div class="col-md-11">
+                <span ng-click="SearchModal();" class="btn btn-info pull-right">Search</span>
+        </div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-md-12">
+            <div ui-grid="gridOptions1" ui-grid-edit ui-grid-selection ui-grid-exporter class="grid" style="height:450px;" ></div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <script type="text/ng-template" id="myModalContent.html">
+        <form name="myform">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">Configuration Item Tracker</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+
+                <div class="col-xs-2 {{dynamicCSS.has_success_error}}">
+                    <label class="control-label">Work Item</label>
+                    <input type="text" class="form-control" ng-model="tmp_configuration.work_item_ext_id" ng-blur="onblur('txtWorkItem', tmp_configuration.work_item_ext_id);" required ng-disabled="IsEdit"/>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Sprint</label>
+                    <select class="form-control" id="dn_sprint" ng-model="selecteddata.sprint" ng-options="sprint_ref.sprint_nm for sprint_ref in startupdata.sprints" disabled>
+                    <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="col-xs-2">
+                    <label class="control-label">Application</label>
+                    <select class="form-control" id="dn_application"  ng-model="selecteddata.application" ng-options="application_ref.application_nm for application_ref in startupdata.applications" required>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Configuration Type</label>
+                    <select class="form-control" id="dn_config_tpye" ng-model="selecteddata.config_type" ng-options="config_type_ref.config_type_nm for config_type_ref in startupdata.config_types" required>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-2" >
+			                    <label class="control-label"> PDF
+			                    </label> <br/>
+        		                    <input type="checkbox" ng-model="tmp_configuration.is_pdf">
+		
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">PDF Action</label>
+@*                    <select class="form-control" ng-model="tmp_configuration.pdfaction" ng-options="item.key as item.value for item in startupdata.pdfactions">
+                    </select>*@
+                <select class="form-control" ng-model="tmp_configuration.pdfaction" ng-options="item.key as item.value for item in startupdata.pdfactions"></select>
+
+@*                    <select class="form-control" ng-model="tmp_configuration.pdfaction">
+                        <option value="1">New</option>
+                        <option value="2">Update</option>
+                        <option value="3">Delete</option>
+                    </select>*@
+@*                    <label class="control-label">Scope</label>
+                    <select class="form-control" id="dn_scope" ng-model="selecteddata.scope" ng-options="scope_ref.scope_nm for scope_ref in startupdata.scopes" disabled required>
+                        <option value=""></option>
+                    </select>*@
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-4">
+                    <label class="control-label">Name/Description</label>
+                    <input type="text" class="form-control"  ng-model="tmp_configuration.config_nm" required/>
+                </div>
+                <div class="col-xs-4">
+                    <label class="control-label">Key</label>
+                    <input type="text" class="form-control"  ng-model="tmp_configuration.config_key" required/>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Status</label>
+                    <select class="form-control" id="dn_status"  ng-model="selecteddata.status" ng-options="status_ref.status_nm for status_ref in startupdata.statuses" required>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-2">
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-4">
+                    <label class="control-label">DEV Value</label>
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_configuration.config_dev_value"></textarea>
+                </div>
+                <div class="col-xs-4">
+                    <label class="control-label">DEV_INT Value</label>
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_configuration.config_dev_int_value"></textarea>
+                </div>
+                <div class="col-xs-4">
+                    <label class="control-label">QA Value</label>
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_configuration.config_qa_value"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+                <div class="col-xs-4">
+                    <label class="control-label">Production Value</label>
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_configuration.config_prod_value"></textarea>
+                </div>
+                <div class="col-xs-8">
+                    <label class="control-label">Comments</label>
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_configuration.comments"></textarea>
+                </div>
+        </div>
+
+        <div class="modal-footer">
+            <button  class="btn btn-success" type="button" ng-click="ok(true)" ng-disabled="myform.$invalid">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+        </form>
+    </script>
+
+    @*    <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
+    <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
+    <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>*@
+</div>
+
+</div>

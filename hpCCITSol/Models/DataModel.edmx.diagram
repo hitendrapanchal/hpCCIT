@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fb84909f57e849dcbe341db244955341" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="eTrackerDataModel.api_ref" Width="1.5" PointX="9.9817617675204584" PointY="19.120260336957994" />
+        <EntityTypeShape EntityType="eTrackerDataModel.api_type_ref" Width="1.5" PointX="3.5935353504463725" PointY="14.961846447997655" />
+        <EntityTypeShape EntityType="eTrackerDataModel.application_ref" Width="1.5" PointX="10.084574678020818" PointY="18.457771712195953" />
+        <EntityTypeShape EntityType="eTrackerDataModel.checklist_action_ref" Width="1.5" PointX="4.70979203689368" PointY="24.811070885886938" />
+        <EntityTypeShape EntityType="eTrackerDataModel.checklist_action_xref" Width="1.5" PointX="0.709372798311232" PointY="24.738655832008764" />
+        <EntityTypeShape EntityType="eTrackerDataModel.checklist_ref" Width="1.5" PointX="3.7830857708040098" PointY="14.658559016258716" />
+        <EntityTypeShape EntityType="eTrackerDataModel.checklist_template_ref" Width="1.5" PointX="8.9598704972117531" PointY="17.917578064798182" />
+        <EntityTypeShape EntityType="eTrackerDataModel.checklist_template_xref" Width="1.5" PointX="1.2496134309329154" PointY="13.804806328287723" />
+        <EntityTypeShape EntityType="eTrackerDataModel.client_ref" Width="1.5" PointX="11.944260796506079" PointY="1.7954643079058568" />
+        <EntityTypeShape EntityType="eTrackerDataModel.config_type_ref" Width="1.5" PointX="3.6070905419099564" PointY="20.42507211324995" />
+        <EntityTypeShape EntityType="eTrackerDataModel.configuration_ref" Width="1.5" PointX="5.55076129061671" PointY="9.1417582375657549" />
+        <EntityTypeShape EntityType="eTrackerDataModel.deployment_environment_ref" Width="1.5" PointX="1.5565695043451011" PointY="0.803410590069094" />
+        <EntityTypeShape EntityType="eTrackerDataModel.deployment_mse_environment_ref" Width="1.5" PointX="5.598127531631909" PointY="28.501649258891888" />
+        <EntityTypeShape EntityType="eTrackerDataModel.deployment_type_ref" Width="1.5" PointX="0.061342611937477538" PointY="15.133806980742984" />
+        <EntityTypeShape EntityType="eTrackerDataModel.inventory_ref" Width="1.5" PointX="2.77725376318081" PointY="6.340630236240397" />
+        <EntityTypeShape EntityType="eTrackerDataModel.release_ref" Width="1.5" PointX="1.2692451445708262" PointY="4.5376051238447452" />
+        <EntityTypeShape EntityType="eTrackerDataModel.release_sprint_xref" Width="1.5" PointX="8.71612818945019" PointY="21.723507801873382" />
+        <EntityTypeShape EntityType="eTrackerDataModel.release_work_item_xref" Width="1.5" PointX="9.0003875331023639" PointY="9.6132269248427953" />
+        <EntityTypeShape EntityType="eTrackerDataModel.report_part_ref" Width="1.5" PointX="5.1476985389123193" PointY="30.344739063803452" />
+        <EntityTypeShape EntityType="eTrackerDataModel.report_ref" Width="1.5" PointX="5.0589778148843809" PointY="10.253220056301551" />
+        <EntityTypeShape EntityType="eTrackerDataModel.rfc_detail_ref" Width="1.5" PointX="3.516058575136614" PointY="10.930422966801759" />
+        <EntityTypeShape EntityType="eTrackerDataModel.rfc_ref" Width="1.5" PointX="2.8708805492477865" PointY="10.217368771423292" />
+        <EntityTypeShape EntityType="eTrackerDataModel.rfc_template_application_xref" Width="1.5" PointX="0.686793538130258" PointY="26.698871326958233" />
+        <EntityTypeShape EntityType="eTrackerDataModel.rfc_template_detail_ref" Width="1.5" PointX="10.339306476683966" PointY="23.023024688951217" />
+        <EntityTypeShape EntityType="eTrackerDataModel.rfc_template_ref" Width="1.5" PointX="1.9771887780992261" PointY="29.204068763742256" />
+        <EntityTypeShape EntityType="eTrackerDataModel.scope_ref" Width="1.5" PointX="3.6339324804180917" PointY="31.766717001687137" />
+        <EntityTypeShape EntityType="eTrackerDataModel.server_ref" Width="1.5" PointX="7.3038695488608756" PointY="25.846586954708485" />
+        <EntityTypeShape EntityType="eTrackerDataModel.server_type_ref" Width="1.5" PointX="10.344657327208974" PointY="17.4762731424888" />
+        <EntityTypeShape EntityType="eTrackerDataModel.sprint_ref" Width="1.5" PointX="5.6135281220141469" PointY="8.7793503444545671" />
+        <EntityTypeShape EntityType="eTrackerDataModel.status_ref" Width="1.5" PointX="0.012564886367211531" PointY="30.390549882496963" />
+        <EntityTypeShape EntityType="eTrackerDataModel.status_type_ref" Width="1.5" PointX="6.8603217801360046" PointY="29.425638450973498" />
+        <EntityTypeShape EntityType="eTrackerDataModel.sub_type_ref" Width="1.5" PointX="6.5268978190267912" PointY="27.551030559256223" />
+        <EntityTypeShape EntityType="eTrackerDataModel.type_ref" Width="1.5" PointX="8.00775079243246" PointY="5.5506235982992793" />
+        <EntityTypeShape EntityType="eTrackerDataModel.work_item_ref" Width="1.5" PointX="8.7808314416468285" PointY="2.1694801906912962" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

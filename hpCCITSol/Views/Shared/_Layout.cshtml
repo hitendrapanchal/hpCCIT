@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/ui-grid.js"></script>
+    <link href="~/Content/ui-grid.css" rel="stylesheet" />
+    <script src="~/Scripts/app.js"></script>
+
+    <link href="~/Content/app.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="~/Scripts/angular-animate.min.js"></script>
+    <script src="~/Scripts/service.js"></script>
+    <script src="~/Scripts/angular-material.js"></script>
+    <script src="~/Scripts/angular-aria.js"></script>
+    <script src="~/Scripts/isteven-multi-select.js"></script>
+    <link href="~/Content/isteven-multi-select.css" rel="stylesheet" />
+    <link href="~/Content/angular-material/angular-material.css" rel="stylesheet" />
+    <script src="~/Scripts/ConfigurationController.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/angular-filter.js"></script>
+    <link href="~/Content/ng-table.css" rel="stylesheet" />
+    <script src="~/Scripts/ng-table.js"></script>
+@*    <script src="~/Scripts/angular-ui/ui-bootstrap.js"></script>    generating error*@
+    <link href="~/Content/landing-page.css" rel="stylesheet" />
+    <link href="~/Content/ng-notify.min.css" rel="stylesheet" />
+    <script src="~/Scripts/ng-notify.min.js"></script>
+    <script src="~/Scripts/draggable-rows.js"></script>
+</head>
+<body>
+
+     <div  ng-controller="myAppStartController" ng-init="ApplicationStart()"></div>
+    
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="\Home">hpCCIT : Home</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Work Item", "Index", "WorkItem", new { area = "" },null)</li>
+                    <li>@Html.ActionLink("Configuration", "Index", "Configuration", new { area = "" },null)</li>
+                    <li>@Html.ActionLink("Release", "Index", "Release", new { area = "" },null)</li>
+                    <li>@Html.ActionLink("Check-List", "Index", "CheckListAction", new { area = "" },null)
+                    <li>@Html.ActionLink("Inventory", "Index", "Inventory", new { area = "" },null)
+                    <li>@Html.ActionLink("API", "Index", "APIMgmt", new { area = "" },null)
+                    <li>@Html.ActionLink("Reports", "Index", "Report", new { area = "" },null)
+                    <li>@Html.ActionLink("Settings", "Index", "Settings", new { area = "" },null)
+                    <li>@Html.ActionLink("About", "Contact", "Home", new { area = "" },null)
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+
+
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

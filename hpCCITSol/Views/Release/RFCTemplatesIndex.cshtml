@@ -1,0 +1,197 @@
+﻿@{
+    ViewBag.Title = "hpCCIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Scripts/RFCTemplateController.js"></script>
+
+
+<div ng-controller="RFCTemplateController" id="div11">
+
+    <div class="container" style="padding-top: 30px;">
+        <h1 style="text-align: center" class="page-header">RFC Templates</h1>
+    </div>
+
+    <div class="container" id="body">
+
+        <div class="row">
+            <div class="col-md-6">
+                <span ng-click="AddNew();" class="btn btn-success">Add New Template</span>
+            </div>
+            <div class="col-md-6">
+@*                <a href="/CheckList/CheckList" class="btn btn-info pull-right">Check List Items</a>*@
+            </div>
+        </div>
+        <p></p>
+        <div class="row">
+            <div class="col-md-12">
+                <div ui-grid="gridOptions" ui-grid-edit ui-grid-selection ui-grid-exporter class="grid" style="height: 400px;"></div>
+            </div>
+        </div>
+        <br />
+
+    </div>
+
+    <div class="container">
+        <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">Template</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+                <div class="col-xs-8">
+                    <label class="control-label">RFC Template Name</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data.rfc_template_nm"/>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-12">
+                    <label class="control-label">Description</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data.rfc_template_descr"/>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-3">
+                    <label class="control-label">Applications</label>
+                    <div isteven-multi-select input-model="startupdata.applications" output-model="selecteddata.applications"  button-label="application_nm"  item-label="application_nm" tick-property="ticked"></div>
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">Template file</label>
+                    <select class="form-control" ng-model="tmp_data.rfc_template_filename" ng-options="item.Key as item.Key for item in startupdata.rfctemplatefiles">
+                    <option value=""></option>
+                    </select>
+
+                </div>
+                <div class="col-xs-6">
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-3">
+                    <label class="control-label">Deployment Environment</label>
+                    <select class="form-control" id="dn_deployenv" ng-model="tmp_data.deployment_environment_id" ng-options="deployment_environment_ref.deployment_environment_id as deployment_environment_ref.deployment_environment_nm for deployment_environment_ref in startupdata.deployment_environment_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="col-xs-3">
+                    <label class="control-label">MSE</label>
+                    <select class="form-control" id="dn_deployenvmse" ng-model="tmp_data.deployment_mse_environment_id" ng-options="deployment_mse_environment_ref.deployment_mse_environment_id as deployment_mse_environment_ref.deployment_mse_environment_nm for deployment_mse_environment_ref in startupdata.deployment_mse_environment_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">Deployment Type</label>
+                    <select class="form-control" id="dn_deploymentype" ng-model="tmp_data.deployment_type_id" ng-options="deployment_type_ref.deployment_type_id as deployment_type_ref.deployment_type_nm for deployment_type_ref in startupdata.deployment_type_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="col-xs-3">
+                    <label class="control-label">Server Type</label>
+                    <select class="form-control" id="dn_servernm" ng-model="tmp_data.server_type_id" ng-options="server_type_ref.server_type_id  as server_type_ref.server_type_nm for server_type_ref in startupdata.server_type_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Comments</label>
+            <textarea class="form-control" name="review" rows="3" ng-model="tmp_data.comments"></textarea>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok(true)">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+        </script>
+
+    </div>
+
+
+  <div class="container">
+        <script type="text/ng-template" id="myRFCTemplateDetail.html">
+        <div class="modal-header bg-info">
+                <h3 class="modal-title">RFC Template Details</h3>
+        </div>
+        <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label">RFC Template Name : {{tmp_data.rfc_template_nm}}</label>
+                    </div>
+                    <div class="col-md-6">
+                        <span ng-click="AddNewRFCTemplateDetail();" class="btn btn-success pull-right">Add Detail</span>
+                    </div>
+                </div>
+                    <p></p>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ui-grid="gridOptionsRFCTemplateDetails" ui-grid-edit ui-grid-selection  style="height:300px;" class="grid"></div>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 10px;">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Close</button>
+        </div>
+        </script>
+
+    </div>
+
+    <div class="container">
+        <script type="text/ng-template" id="RFCTemplateDetailEntry.html">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">RFC Template Detail - Entry</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+                <div class="col-xs-4">
+                    <label class="control-label">Report Part</label>
+                    <select class="form-control" id="dn_reportpart" ng-model="tmp_data_rfc_detail.rfc_report_part_id" ng-options="reportparts.report_part_id as reportparts.report_part_nm for reportparts in startupdata.reportparts">
+                    <option value=""></option>
+                     </select>
+
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">Key</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data_rfc_detail.rfc_template_detail_key"/>
+                </div>
+                <div class="col-xs-5">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-12">
+                    <label class="control-label">Description</label>
+                     <textarea class="form-control" name="review" rows="6" ng-model="tmp_data_rfc_detail.rfc_template_detail_nm"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok(true)">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+        </script>
+
+    </div>
+
+    
+ 
+
+</div>

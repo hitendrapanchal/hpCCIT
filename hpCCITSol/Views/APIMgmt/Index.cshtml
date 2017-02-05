@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "hpCCIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Scripts/APIMgmtController.js"></script>
+
+
+<div ng-controller="APIMgmtController" id="div11">
+
+    <div class="container" style="padding-top: 30px;">
+        <h1 style="text-align: center" class="page-header">API Management</h1>
+    </div>
+
+    <div class="container" id="body">
+
+        <div class="row">
+            <div class="col-md-4" style="padding-top: 5px">
+                <span ng-click="AddNew();" class="btn btn-success">Add Entry</span>
+            </div>
+            <div class="col-md-7" style="padding-top: 5px">
+            </div>
+            <div class="col-md-1" style="padding-top: 5px">
+@*                <span ng-click="exportPdf();" class="btn btn-info pull-right">Export</span>*@
+            </div>
+        </div>
+        <p></p>
+        <div class="row">
+            <div class="col-md-12">
+                <div ui-grid="gridOptions1" ui-grid-edit ui-grid-selection ui-grid-exporter class="grid" style="height: 450px;"></div>
+            </div>
+        </div>
+        <br />
+
+    </div>
+
+    <div class="container">
+        <script type="text/ng-template" id="myModalContent.html">
+    <form name="myform">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">API Tracker</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+
+                <div class="col-xs-3">
+                    <label class="control-label">API Name</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data.api_name" required/>
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">API Type</label>
+                    <select class="form-control" id="dn_apitype" ng-model="tmp_data.api_type_id" ng-options="api_type_ref.api_type_id as api_type_ref.api_type_nm for api_type_ref in startupdata.api_type_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">Client</label>
+                    <select class="form-control" id="dn_client" ng-model="tmp_data.client_id" ng-options="client_ref.client_id as client_ref.client_nm for client_ref in startupdata.client_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">Application</label>
+                    <select class="form-control" id="dn_application" ng-model="tmp_data.application_id" ng-options="application_ref.application_id as application_ref.application_nm for application_ref in startupdata.application_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-3">
+                    <label class="control-label">DEV Queue/URL</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data.api_dev_url"/>
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">DEV_INT Queue/URL</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data.api_dev_int_url"/>
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">QA Queue/URL</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data.api_qa_url"/>
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">Production Queue/URL</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data.api_prod_url"/>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-3">
+                    <input type="text" class="form-control"  ng-model="tmp_data.api_dev_version" placeholder='Version'/>
+                </div>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control"  ng-model="tmp_data.api_dev_int_version" placeholder='Version'/>
+                </div>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control"  ng-model="tmp_data.api_qa_version" placeholder='Version'/>
+                </div>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control"  ng-model="tmp_data.api_prod_version" placeholder='Version'/>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-3">
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_data.api_dev_metadata" placeholder='Header/Metadata'></textarea>
+                </div>
+                <div class="col-xs-3">
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_data.api_dev_int_metadata" placeholder='Header/Metadata'></textarea>
+                </div>
+                <div class="col-xs-3">
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_data.api_qa_metadata" placeholder='Header/Metadata'></textarea>
+                </div>
+                <div class="col-xs-3">
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_data.api_prod_metadata" placeholder='Header/Metadata'></textarea>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-6">
+                    <label class="control-label">API common other metadata</label>
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_data.api_metadata"></textarea>
+                </div>
+                <div class="col-xs-6">
+                    <label class="control-label">Comments</label>
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_data.api_comments"></textarea>
+                </div>
+            </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok(true)" ng-disabled="myform.$invalid">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+        </script>
+
+    </div>
+
+
+
+
+   
+
+</div>

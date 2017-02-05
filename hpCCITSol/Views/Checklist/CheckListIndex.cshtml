@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "hpCCIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Scripts/CheckListController.js"></script>
+
+
+<div ng-controller="CheckListController" id="div11">
+
+    <div class="container" style="padding-top: 30px;">
+        <h1 style="text-align: center" class="page-header">CheckList Master</h1>
+    </div>
+
+    <div class="container" id="body">
+
+        <div class="row">
+            <div class="col-md-6">
+                <span ng-click="AddNew();" class="btn btn-success">Add Check List Item</span>
+            </div>
+            <div class="col-md-6"  ng-show="ShowHide.SearchBox">
+                     <span ng-click="ExecuteReport();" class="btn btn-info pull-right">Templates</span>
+            </div>
+        </div>
+        <p></p>
+        <div class="row">
+            <div class="col-md-12">
+                <div ui-grid="gridOptionsCheckList" ui-grid-edit ui-grid-selection ui-grid-exporter class="grid" style="height: 400px;"></div>
+            </div>
+        </div>
+        <br />
+     
+    </div>
+
+    <div class="container">
+        <script type="text/ng-template" id="myModalContent.html">
+    <form name="myform">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">Check List Item Tracker</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+
+                <div class="col-xs-8">
+                    <label class="control-label">Name</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data.checklist_nm" required/>
+                </div>
+                <div class="col-xs-4">
+                    <label class="control-label">Sub Types</label>
+                    <select class="form-control" id="dn_subtype" ng-model="tmp_data.sub_type_id" ng-options="sub_type_ref.sub_type_id as sub_type_ref.sub_type_nm for sub_type_ref in startupdata.sub_type_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-12">
+                    <label class="control-label">Default Powershell Script</label>
+                    <textarea class="form-control" name="review" rows="3" ng-model="tmp_data.default_powershell_script"></textarea>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-3">
+                    <label class="control-label">Default PS Timeout</label>
+                    <input type="number" class="form-control" placeholder='Time out in ms' ng-model="tmp_data.default_powershell_script_timedout"/>
+                </div>
+                <div class="col-xs-9">
+                </div>
+            </div>
+
+        </div>
+
+@*        <div class="form-group">
+            <label class="control-label">Comments</label>
+            <textarea class="form-control" name="review" rows="2" ng-model="tmp_data.comments"></textarea>
+        </div>*@
+
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok(true)" ng-disabled="myform.$invalid">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+        </script>
+
+    </div>
+
+
+
+   <div class="container">
+        <script type="text/ng-template" id="myReport.html">
+        <div class="modal-header bg-info">
+            <h3 class="modal-title">Report</h3>
+        </div>
+        <div class="modal-body">
+        <div class="container pre-scrollable" style="max-height: 450px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ng-repeat="(tablekey, tabledata) in tmp_report_data.reportdata" style="padding-top:20px;">
+                            #{{$index+1}}
+                            <table ng-table="tableParams" class="table table-condensed table-bordered table-striped table-hover">
+                                <thead class="bg-primary">
+                                    <tr ng-repeat="item in tabledata | limitTo:1">
+                                        <th ng-repeat="(key, val) in item" >{{key}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in tabledata">
+                                        <td ng-repeat="(key, val) in item">{{val}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+        </div>   
+
+        <div class="modal-footer">
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Close</button>
+        </div>
+        </script>
+
+    </div>
+
+
+
+
+
+</div>

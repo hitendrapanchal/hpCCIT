@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "hpCCIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Scripts/SettingsController.js"></script>
+
+<div ng-controller="SettingsController" id="div12">
+
+    <div class="container" style="padding-top: 50px;">
+        <h1 style="text-align: center">File Upload</h1>
+    </div>
+
+    <div class="container" id="body">
+
+        <div class="row">
+            <div class="col-md-9">
+                <label class="control-label">Select File</label>
+                <input id="input-1" type="file" class="file">
+            </div>
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-2">
+@*                <span ng-click="SearchClear();" class="btn btn-warning">Clear</span>*@
+            </div>
+        </div>
+        <p></p>
+        <div class="row">
+            <div class="col-md-12">
+                <angular-filemanager></angular-filemanager>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+</div>

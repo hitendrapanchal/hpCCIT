@@ -1,0 +1,239 @@
+﻿@{
+    ViewBag.Title = "hpCCIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Scripts/CheckListActionController.js"></script>
+
+
+<div ng-controller="CheckListActionController" id="div11">
+
+    <div class="container" style="padding-top: 30px;">
+        <h1 style="text-align: center" class="page-header">CheckList Action</h1>
+    </div>
+
+    <div class="container" id="body">
+
+        <div class="row">
+            <div class="col-md-8">
+                <span ng-click="AddNew();" class="btn btn-success">New Check List</span>
+            </div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-1">
+                <span ng-click="SearchModal();" class="btn btn-info pull-right">Search</span>
+            </div>
+        </div>
+        <p></p>
+        <div class="row">
+            <div class="col-md-12">
+                <div ui-grid="gridOptionsCheckList" ui-grid-edit ui-grid-selection ui-grid-exporter class="grid" style="height: 400px;"></div>
+            </div>
+        </div>
+        <br />
+        <span class="label label-success">*Checklists are completed</span>
+
+    </div>
+
+    <div class="container">
+        <script type="text/ng-template" id="myModalContent.html">
+    <form name="myform">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">New CheckList</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+                <div class="col-xs-6">
+                    <label class="control-label">Check List Template</label>
+                    <select class="form-control" id="dn_chklisttemplate"  ng-model="selecteddata.checklist_template" ng-options="checklist_template_ref.checklist_template_nm for checklist_template_ref in startupdata.checklisttemplates"  ng-disabled="IsEdit"  ng-change="tmp_data.checklist_action_nm=selecteddata.checklist_template.checklist_template_nm">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-6">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-12" >
+                    <label class="control-label">Name</label>
+                    <input type="text"  class="form-control"  ng-model="tmp_data.checklist_action_nm" required></input>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Comments</label>
+            <textarea class="form-control" name="review" rows="4" ng-model="tmp_data.comments"></textarea>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok(true)" ng-disabled="myform.$invalid">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+        </script>
+
+    </div>
+
+
+  <div class="container">
+        <script type="text/ng-template" id="myCheckListActionItems.html">
+        <div class="modal-header bg-info">
+                <h3 class="modal-title">Action Items</h3>
+        </div>
+        <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label">Checklist Name : {{CheckListActionInfo[0].checklist_action_nm}}</label>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ui-grid="gridOptionsCheckListActionItems" ui-grid-edit ui-grid-selection  style="height:300px;" class="grid"></div>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 10px;">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+
+        </div>
+        <div class="modal-footer">
+@*            <button class="btn btn-success"  type="button" ng-click="SaveActionItemsStatus()">Save</button>*@
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Close</button>
+        </div>
+        </script>
+
+    </div>
+
+
+
+
+  <div class="container">
+        <script type="text/ng-template" id="myCheckListActionOnItem.html">
+        <div class="modal-header bg-info">
+                <h3 class="modal-title">Action</h3>
+        </div>
+        <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label">Checklist Name : {{tmp_action_item_data.checklist_nm}}</label>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label">Status</label>
+                        <select class="form-control" id="dn_chklisttemplate"  ng-model="selecteddata.checklist_action_xref_status_id" ng-options="key as value for  (value, key) in startupdata.ChecklistActionStatuses">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-2">
+                        <label class="control-label">Powershell Timeout (ms)</label>
+                        <input type="number"  class="form-control" placeholder="Time in ms" ng-model="tmp_action_item_data.powershell_script_timedout"></input>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label">Powershell script</label>
+                        <textarea class="form-control" name="review" rows="4" placeholder="" ng-model="tmp_action_item_data.powershell_script"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label">Powershell Execution output/comments</label>
+                        <textarea class="form-control" name="review" rows="4" ng-model="tmp_action_item_data.powershell_script_execution_comments"></textarea>
+                    </div>
+                </div>
+
+        <div class="form-group">
+            <label class="control-label">Comments</label>
+            <textarea class="form-control" name="review" rows="2" ng-model="tmp_action_item_data.comments"></textarea>
+        </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success"  type="button" ng-click="ok(true)">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Close</button>
+        </div>
+        </script>
+
+    </div>
+
+
+
+
+  <div class="container">
+        <script type="text/ng-template" id="myCheckListActionSearch.html">
+  <div>
+    <div class="modal-header bg-info">
+        <h3 class="modal-title">Search</h3>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+
+                <div class="col-md-6">
+                    <label class="control-label">Search for</label>
+                        <select class="form-control" ng-model="filters.search_for_options" ng-options="opt.name for opt in startupdata.search_for_options" ></select>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label">User</label>
+                    <input type="text" class="form-control" placeholder="User1;User2;" ng-model="filters.modified_usr_ids" />
+                </div>
+            </div>
+
+
+            <div class="row form-group" style="padding-top: 5px;">
+                <div class="col-md-6" ng-controller="DatepickerCtrl">
+                    <label class="control-label">Start date</label>
+
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dates.startdate" is-open="is_open_dates.startdate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event, 'startdate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+
+                <div class="col-md-6" ng-controller="DatepickerCtrl">
+                    <label class="control-label">End date</label>
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dates.enddate" is-open="is_open_dates.enddate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event, 'enddate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button class="btn btn-warning" type="button" ng-click="SearchClear()">Clear</button>
+                <button class="btn btn-success" type="button" ng-click="ok(true)">OK</button>
+                <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        </script>
+
+    </div>
+
+
+</div>

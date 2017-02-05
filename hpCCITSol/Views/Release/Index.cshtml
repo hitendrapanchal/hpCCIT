@@ -1,0 +1,550 @@
+﻿@{
+    ViewBag.Title = "hpCCIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <script src="~/Scripts/ReleaseController.js"></script>
+
+<div ng-controller="ReleaseController" id="div12">
+
+<div class="container page-header" style="padding-top: 5px;" >
+    <h1 style="text-align:center">Release Tracker</h1>
+
+</div>
+
+<div class="container" id="body">
+
+    <div class="row">
+        <div class="col-md-1">
+            <span ng-click="AddNew();" class="btn btn-success">Add Release</span>
+        </div>
+        <div class="col-md-10">
+        </div>
+        <div class="col-md-1">
+            <span ng-click="SearchModal();" class="btn btn-info">Search</span>
+        </div>
+
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-md-12">
+            <div ui-grid="gridOptions1" ui-grid-edit ui-grid-selection ui-grid-exporter style="height:250px;"></div>
+        </div>
+    </div>
+
+    <div class="row" style="padding-top: 10px;">
+        <div class="col-md-12">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 ">
+
+         <uib-tabset active="activeJustified">
+            <uib-tab index="0" heading="Work Items" >
+                <div class="row">
+                    <div class="col-md-12">
+                            <div ui-grid="gridOptionsReleaseWorkItem" ui-grid-edit ui-grid-selection ui-grid-exporter ui-grid-auto-resize style="height:450px;" class="grid"></div>
+                    </div>
+                    </div>
+                <div class="row" style="padding-top: 10px;padding-bottom: 10px;">
+                    <div class="col-md-2">
+                        <span class="label label-success">Select Work Item(s) to be in release.</span>
+                    </div>
+                    <div class="col-md-10" ng-show="ShowHide.SaveWorkItem">
+                        <button class="btn btn-danger pull-right"  style="margin-left: 5px;" type="button" ng-click="cancel()">Cancel</button>
+                        <button class="btn btn-success pull-right"  type="button" ng-click="SaveReleaseWorkItems()">Save</button>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="1" heading="IT Validation" >
+                <div class="row">
+                    <div class="col-md-12">
+                            <div ui-grid="gridOptionsReleaseConfigs"  ui-grid-selection ui-grid-exporter ui-grid-auto-resize style="height:450px;" class="grid"></div>
+         
+                    </div>
+                    </div>
+
+            </uib-tab>
+            <uib-tab index="2" heading="PDFs" >
+                <div class="row">
+                    <div class="col-md-12">
+                            <div ui-grid="gridOptionsReleasePDFs"  ui-grid-selection ui-grid-exporter ui-grid-auto-resize ui-grid-grouping style="height:450px;" class="grid"></div>
+         
+                    </div>
+                    </div>
+
+            </uib-tab>
+            <uib-tab index="3" heading="Business Validation" >
+                <div class="row">
+                    <div class="col-md-12">
+                            <div ui-grid="gridOptionsReleaseBusinessValidationDetails"  ui-grid-selection ui-grid-exporter ui-grid-auto-resize style="height:450px;" class="grid"></div>
+         
+                    </div>
+                </div>
+
+            </uib-tab>
+            <uib-tab index="4" heading="Application Matrix">
+                <div class = "panel panel-body" style="height:450px;overflow-y: scroll;overflow-x: scroll;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div>
+                                    <table ng-table="tableParams" class="table table-condensed table-bordered table-striped table-hover">
+                                        <thead class="ui-grid-top-panel">
+                                            <tr>
+                                                <th>Work Item#</th>
+                                                <th>Total</th>
+                                                <th ng-repeat="item in ApplicationMatrix.data.applications">{{item.application_nm}}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr ng-repeat="(key, value) in ApplicationMatrix.data.matrixdata | groupBy: 'work_item_ext_id'">
+                                                <td style="text-align:center;" title="{{value[0].work_item_title}}">
+                                                    {{key}}
+                                                </td>
+                                                <td style="text-align:center;font-weight:bold" class="info">
+                                                    {{value.length}} 
+                                                </td>
+                                                <td ng-repeat="item_app in ApplicationMatrix.data.applications" style="text-align:center">
+                                                <span ng-repeat="item in value">
+                                                    <span ng-show="item.application_nm==item_app.application_nm" class="glyphicon glyphicon-ok" style="color:green"></span>
+                                                </span>
+                                                </td>
+                                            </tr>
+
+                                            <tr class = "success" style="font-weight:bold">
+                                                <td style="text-align:center">Total</td>
+                                                <td style="text-align:center">
+                                                    {{ApplicationMatrix.data.matrixdata.length}}
+                                                </td>
+                                                <td ng-repeat="item_app in ApplicationMatrix.data.applications" style="text-align:center">
+                                                        {{(ApplicationMatrix.data.matrixdata|filter:{application_nm:item_app.application_nm}).length}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                </div>
+            </uib-tab>
+            <uib-tab index="5" heading="Release Notes">
+                <div class="row">
+                    <div class="col-md-12">
+                            <div ui-grid="gridOptionsRN"  ui-grid-selection ui-grid-auto-resize style="height:450px;" class="grid"></div>
+         
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 10px;padding-bottom: 10px;">
+                    <div class="col-md-2">
+                        <span class="label label-success">RFCs get created automatically based on WI selected. Manually RFC creation option will be used if no RFC is created automatically.</span>
+                    </div>
+                    <div class="col-md-10">
+                        <button class="btn btn-success pull-right"  style="margin-left: 5px;" type="button" ng-click="AddNewRFC()">Create RFC Manually</button>
+                    </div>
+                </div>
+
+            </uib-tab>
+          </uib-tabset>
+
+
+
+        </div>
+    </div>
+
+ 
+
+</div>
+
+
+
+
+<div class="container">
+    <script type="text/ng-template" id="myModalContent.html">
+    <form name="myform">
+        <div class="modal-header bg-info">
+            <h3 class="modal-title">Release</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+                <div class="col-xs-8">
+                    <label class="control-label">Release Name</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.release_nm" required/>
+                </div>
+
+                <div class="col-xs-4">
+                    <label class="control-label">Release Date</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.release_dt" required />
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-8">
+                    <label class="control-label">Description</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.release_descr" />
+                </div>
+            <div class="col-xs-4">
+                <label class="control-label">Sprint</label>
+                <div isteven-multi-select input-model="startupdata.sprints" output-model="selecteddata.sprint"  button-label="sprint_nm"  item-label="sprint_nm" tick-property="ticked" required></div>
+            </div>
+            </div>
+
+
+
+            <div class="row" class="ng-hide" ng-show="IsEdit">
+                <div class="col-xs-2">
+                    <label class="control-label">Release Notes</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.created_usr_id" disabled/>
+                    </div>
+                <div class="col-xs-2">
+                    <label class="control-label">IT Validation</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.created_dtm" disabled/>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Business Validation</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.modified_usr_id" disabled/>
+                    </div>
+                <div class="col-xs-2">
+                </div>
+                <div class="col-xs-2">
+                </div>
+                <div class="col-xs-2">
+                </div>
+            </div>
+
+
+            <div class="row" class="ng-hide" ng-show="IsEdit">
+                <div class="col-xs-2">
+                    <label class="control-label">Created By</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.created_usr_id" disabled/>
+                    </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Created Date</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.created_dtm" disabled/>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Modified By</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.modified_usr_id" disabled/>
+                    </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Modified Date</label>
+                    <input type="text" class="form-control" ng-model="tmp_data.modified_dtm" disabled/>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label">Status</label>
+                    <select class="form-control" id="dn_status" ng-model="selecteddata.status" ng-options="status_ref.status_nm for status_ref in startupdata.statuses track by status_ref.status_id">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-2">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Comments</label>
+            <textarea class="form-control" name="review" rows="3" ng-model="tmp_data.comments"></textarea>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok()" ng-disabled="myform.$invalid">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+    </script>
+
+</div>
+
+    
+<div class="container">
+    <script type="text/ng-template" id="myModalSearch.html">
+        <div class="modal-header bg-warning">
+            <h3 class="modal-title">Search</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+
+             <div class="col-md-3">
+                <label class="control-label">Sprint(ss)</label>
+                <input type="text" class="form-control" placeholder="Sprint_MM_YYYY;" id="config_key" ng-model="filters.sprint_nm" />
+            </div>
+
+            <div class="col-md-3">
+                <label class="control-label">Application(s)</label>
+                <input type="text" placeholder="APP1;APP2;" class="form-control" ng-model="filters.application_nm" />
+            </div>
+            <div class="col-md-3">
+                <label class="control-label">Work Item(s)</label>
+                <input type="text" class="form-control" placeholder="VOICE-XXXX;" ng-model="filters.work_item_nm" />
+
+            </div>
+            <div class="col-md-3">
+                <label class="control-label">Scope</label>
+                <div isteven-multi-select input-model="startupdata.scopes" output-model="filters.scope"  button-label="scope_nm"  item-label="scope_nm" tick-property="ticked"></div>
+            
+            </div>
+
+        </div>
+
+
+        <div class="row form-group" style="padding-top: 5px;" >
+            <div class="col-md-3">
+                <label class="control-label">Release (s)</label>
+                <input type="text" class="form-control" placeholder="Release1;Release2;" id="config_user" ng-model="filters.release_nm" />
+            </div>
+            <div class="col-md-3" ng-controller="DatepickerCtrl">
+                <label class="control-label">Start date</label>
+
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dates.startdate" is-open="is_open_dates.startdate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event, 'startdate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+
+            <div class="col-md-3" ng-controller="DatepickerCtrl">
+                <label class="control-label">End date</label>
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dates.enddate" is-open="is_open_dates.enddate"  max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event, 'enddate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+
+
+        <div class="modal-footer">
+            <button class="btn btn-warning" type="button" ng-click="SearchClear()">Clear</button>
+            <button class="btn btn-success" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+</div>
+
+
+   <div class="container">
+        <script type="text/ng-template" id="ReleaseBusinessValidationDetailsEdit.html">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">Business Validation - Edit</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+                <div class="col-xs-12">
+                    <label class="control-label">Is Business Validation Required? <input  type="checkbox" ng-model="tmp_data_biz_vld_detail.is_biz_validation_required"></label>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-4">
+                    <label class="control-label">Biz Validator</label>
+                    <input type="text" class="form-control" ng-model="tmp_data_biz_vld_detail.biz_validator_nm" />
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">Status</label>
+                    <select class="form-control" id="dn_status"  ng-model="tmp_data_biz_vld_detail.biz_validation_status" ng-options="status_ref.status_id as status_ref.status_nm for status_ref in startupdata.statuses">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-5">
+                </div>
+            </div>
+
+            <div class="row form-group">
+
+                <div class="col-xs-12">
+                    <label class="control-label">IT Validation SQL</label>
+                     <textarea class="form-control" name="review" rows="5" ng-model="tmp_data_biz_vld_detail.biz_validation_sql"></textarea>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-12">
+                    <label class="control-label">Business Validation</label>
+                     <textarea class="form-control" name="review" rows="5" ng-model="tmp_data_biz_vld_detail.biz_validation_comments"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok(true)">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+        </script>
+    </div>
+
+
+
+    <div class="container">
+        <script type="text/ng-template" id="myModalContentRFC.html">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">RFC</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+                <div class="col-xs-8">
+                    <label class="control-label">RFC Name</label>
+                    <input type="text" class="form-control"  ng-model="tmp_rfc_data.rfc_nm"/>
+                </div>
+                <div class="col-xs-4">
+                    <label class="control-label">RFC #</label>
+                    <input type="text" class="form-control"  ng-model="tmp_rfc_data.rfc_number"/>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-8">
+                    <label class="control-label">Description</label>
+                    <input type="text" class="form-control"  ng-model="tmp_rfc_data.rfc_descr"/>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">Template file</label>
+                    <select class="form-control" ng-model="tmp_rfc_data.rfc_template_filename" ng-options="item.Key as item.Key for item in startupdata.rfctemplatefiles">
+                    <option value=""></option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-3">
+                    <label class="control-label">Deployment Environment</label>
+                    <select class="form-control" id="dn_deployenv" ng-model="tmp_rfc_data.deployment_environment_id" ng-options="deployment_environment_ref.deployment_environment_id as deployment_environment_ref.deployment_environment_nm for deployment_environment_ref in startupdata.deployment_environment_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="col-xs-3">
+                    <label class="control-label">MSE</label>
+                    <select class="form-control" id="dn_deployenvmse" ng-model="tmp_rfc_data.deployment_mse_environment_id" ng-options="deployment_mse_environment_ref.deployment_mse_environment_id as deployment_mse_environment_ref.deployment_mse_environment_nm for deployment_mse_environment_ref in startupdata.deployment_mse_environment_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">Deployment Type</label>
+                    <select class="form-control" id="dn_deploymentype" ng-model="tmp_rfc_data.deployment_type_id" ng-options="deployment_type_ref.deployment_type_id as deployment_type_ref.deployment_type_nm for deployment_type_ref in startupdata.deployment_type_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="col-xs-3">
+                    <label class="control-label">Server Type</label>
+                    <select class="form-control" id="dn_servernm" ng-model="tmp_rfc_data.server_type_id" ng-options="server_type_ref.server_type_id  as server_type_ref.server_type_nm for server_type_ref in startupdata.server_type_ref">
+                    <option value=""></option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Comments</label>
+            <textarea class="form-control" name="review" rows="4" ng-model="tmp_rfc_data.comments"></textarea>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok(true)">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+        </script>
+
+    </div>
+
+
+
+  <div class="container">
+        <script type="text/ng-template" id="myRFCDetail.html">
+        <div class="modal-header bg-info">
+                <h3 class="modal-title">RFC Details</h3>
+        </div>
+        <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label">RFC Name : {{tmp_data.rfc_nm}}</label>
+                    </div>
+                    <div class="col-md-6">
+                        <span ng-click="AddNewRFCDetail();" class="btn btn-success pull-right">Add Detail</span>
+                    </div>
+                </div>
+                    <p></p>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ui-grid="gridOptionsRFCDetails" ui-grid-edit ui-grid-selection  style="height:300px;" class="grid"></div>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 10px;">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Close</button>
+        </div>
+        </script>
+
+    </div>
+
+
+    <div class="container">
+        <script type="text/ng-template" id="RFCDetailEntry.html">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">RFC Detail - Entry</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+                <div class="col-xs-4">
+                    <label class="control-label">Report Part</label>
+                    <select class="form-control" id="dn_reportpart" ng-model="tmp_data_rfc_detail.rfc_report_part_id" ng-options="reportparts.report_part_id as reportparts.report_part_nm for reportparts in startupdata.reportparts">
+                    <option value=""></option>
+                     </select>
+
+                </div>
+                <div class="col-xs-3">
+                    <label class="control-label">Key</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data_rfc_detail.rfc_detail_key"/>
+                </div>
+                <div class="col-xs-5">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-12">
+                    <label class="control-label">Description</label>
+                     <textarea class="form-control" name="review" rows="6" ng-model="tmp_data_rfc_detail.rfc_detail_nm"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok(true)">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+        </script>
+
+    </div>
+
+
+</div>
