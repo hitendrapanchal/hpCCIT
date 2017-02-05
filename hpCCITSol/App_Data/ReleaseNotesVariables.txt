@@ -1,0 +1,12 @@
+﻿Prepopulated variables used in release notes templates
+=============================================================
+@rfc_nm
+@rfc_number
+@rfc_descr
+@rfc_comments
+@deployment_environment_nm
+@deployment_mse_environment_nm
+@deployment_type_nm
+@server_type_nm
+@servers
+@workitems
