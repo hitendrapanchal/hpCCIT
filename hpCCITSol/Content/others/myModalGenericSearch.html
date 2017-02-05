@@ -1,0 +1,71 @@
+﻿<div>
+    <div class="modal-header bg-info">
+        <h3 class="modal-title">Search</h3>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+
+                <div class="col-md-3">
+                    <label class="control-label">Sprints</label>
+                    <div isteven-multi-select input-model="startupdata.sprints" output-model="filters.sprints" button-label="sprint_nm" item-label="sprint_nm" tick-property="ticked"></div>
+
+                </div>
+
+                <div class="col-md-3">
+                    <label class="control-label">Applications</label>
+                    <div isteven-multi-select input-model="startupdata.applications" output-model="filters.applications" button-label="application_nm" item-label="application_nm" tick-property="ticked"></div>
+                </div>
+                <div class="col-md-3">
+                    <label class="control-label">Work Items</label>
+                    <input type="text" class="form-control" placeholder="VOICE-XXXX;" ng-model="filters.work_item_nm" />
+
+                </div>
+                <div class="col-md-3">
+                    <label class="control-label">Scopes</label>
+                    <div isteven-multi-select input-model="startupdata.scopes" output-model="filters.scopes" button-label="scope_nm" item-label="scope_nm" tick-property="ticked"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="row form-group" style="padding-top: 5px;">
+                <div class="col-md-3">
+                    <label class="control-label">Releases</label>
+                    <input type="text" class="form-control" placeholder="Release1;Release2;" id="config_user" ng-model="filters.release_nm" />
+                </div>
+                <div class="col-md-3" ng-controller="DatepickerCtrl">
+                    <label class="control-label">Start date</label>
+
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dates.startdate" is-open="is_open_dates.startdate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event, 'startdate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+
+                <div class="col-md-3" ng-controller="DatepickerCtrl">
+                    <label class="control-label">End date</label>
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dates.enddate" is-open="is_open_dates.enddate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="toggleOpenDatePicker($event, 'enddate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+
+
+            <div class="modal-footer">
+                <button class="btn btn-warning" type="button" ng-click="SearchClear()">Clear</button>
+                <button class="btn btn-success" type="button" ng-click="ok(true)">OK</button>
+                <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

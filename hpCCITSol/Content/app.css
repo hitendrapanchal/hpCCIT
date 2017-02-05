@@ -1,0 +1,76 @@
+﻿
+
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 400px; 
+    height: 300px;
+    float: left;
+}
+
+@media (min-width: 768px) {
+  .modal-md {
+    width: 600px;
+  }
+
+.grid {
+}
+
+.grid .ui-grid-row .selected {
+  color: green;
+  font-weight:bold;
+
+}
+
+.grid .ui-grid-row .newitem {
+    background-color: orange;
+  font-weight:bold;
+
+}
+
+.grid .ui-grid-row .deleteitem {
+    color: red;
+  font-weight:bold;
+
+}
+
+.grid .centeralign {
+    text-align: center; 
+    vertical-align: middle;
+}
+
+
+.selectedItems{
+    float: left; 
+}
+
+
+  .full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+  }
+  .partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+  }
+
+
+.dialogdemoBasicUsage #popupContainer {
+  position: relative; }
+
+.dialogdemoBasicUsage .footer {
+  width: 100%;
+  text-align: center;
+  margin-left: 20px; }
+
+.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+  font-size: 0.8em;
+  margin-top: 50px; }
+
+
+/*
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+*/
+
