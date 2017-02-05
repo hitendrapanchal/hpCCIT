@@ -1,5 +1,6 @@
 # hpCCIT
 Complete Configuration Item Tracker Tool which has below features:
+
 Checklist Management (Powershell automation), Reports and Scheduler, Work Item CI Tracking, API Management, Production Readiness, IT Validation, Release Notes Creation, Business Validation, Admin, Import Work Items & Sprint Checklist Templates
 
 #Inspirations
@@ -25,7 +26,7 @@ There are additional config variables available for debugging:
 For more information, check the Web.Config
 
 #License
-hpCCIT is available under the GNU GENERAL PUBLIC LICENSE. See the (LICENSE.md) file for more info.
+hpCCIT is available under the GNU GENERAL PUBLIC LICENSE. See the [LICENSE](hpCCIT/LICENSE.md) file for more info.
 
 
 #Author
