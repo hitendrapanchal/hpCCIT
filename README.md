@@ -25,10 +25,9 @@ There are additional config variables available for debugging:
 For more information, check the Web.Config
 
 #License
-hpCCIT is available under the GNU GENERAL PUBLIC LICENSE. See the LICENSE file for more info.
+hpCCIT is available under the GNU GENERAL PUBLIC LICENSE. See the (LICENSE.md) file for more info.
 
 
 #Author
 Hitendra Panchal
-[LinkedIn](www.linkedin.com/in/hitendra-panchal-66b87a27)
 
