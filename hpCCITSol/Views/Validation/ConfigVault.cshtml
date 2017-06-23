@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "hpCCIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Scripts/ValidationController.js"></script>
+
+
+<div ng-controller="ValidationController" id="div11">
+
+    <div class="container" style="padding-top: 30px;">
+        <h1 style="text-align: center" class="page-header">Configuration Vault</h1>
+    </div>
+
+    <div class="container" id="body">
+            <form name="myform">
+        <div class="row">
+            <div class="col-md-2">
+                <label class="control-label text-primary">Source</label>
+                <select class="form-control" ng-model="filters.source_env" ng-options="item.key as item.value for item in startupdata.environments" required></select>
+            </div>
+            <div class="col-md-2">
+                <label class="control-label text-primary">Source Env</label>
+                <select class="form-control" ng-model="filters.source_envtype" ng-options="item.key as item.value for item in startupdata.environment_types" required></select>
+            </div>
+            <div class="col-md-2">
+                <label class="control-label text-success">Target</label>
+                <select class="form-control" ng-model="filters.target_env" ng-options="item.key as item.value for item in startupdata.environments" required></select>
+            </div>
+            <div class="col-md-2">
+                <label class="control-label text-success">Target Env</label>
+                <select class="form-control" ng-model="filters.target_envtype" ng-options="item.key as item.value for item in startupdata.environment_types" required></select>
+            </div>
+            <div class="col-md-2">
+                <label class="control-label text-warning">CVP/MT</label>
+                <select class="form-control" ng-model="filters.app_cvpmt" ng-options="item.key as item.value for item in startupdata.app_cvpmt" required></select>
+            </div>
+            <div class="col-md-2" style="padding-top: 25px">
+                <span ng-click="ExecuteReport();" class="btn btn-info pull-right" ng-disabled="myform.$invalid">Execute</span>
+            </div>
+            
+        </div>
+                </form>
+        <p></p>
+        <div class="row">
+            <div class="col-md-12">
+                <div ui-grid="gridOptions1" ui-grid-edit ui-grid-selection ui-grid-exporter class="grid" style="height: 400px;"></div>
+            </div>
+        </div>
+        <br />
+
+    </div>
+  
+</div>
