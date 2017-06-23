@@ -94,6 +94,11 @@ app.service('crudServiceController', function ($http, $rootScope, $location) {
                     apicontollerurl = "/api/ReportAPI/Report";
                     break;
                 }
+            case "VALIDATION":
+                {
+                    apicontollerurl = "/api/ValidationAPI/Validation";
+                    break;
+                }
             case "CHECKLIST":
                 {
                     apicontollerurl = "/api/CheckListAPI/CheckList";
@@ -118,6 +123,7 @@ app.service('crudServiceController', function ($http, $rootScope, $location) {
         }
 
         if (actionname != "") apicontollerurl = apicontollerurl.substring(0, apicontollerurl.lastIndexOf("/") + 1) + actionname;
+        console.log(url + apicontollerurl);
         return url + apicontollerurl;
     }
 
@@ -150,7 +156,7 @@ app.service('crudServiceController', function ($http, $rootScope, $location) {
 
     //Get custom records
     this.search = function (parameters, controllername, actionname) {
-
+        console.log('In search');
         var config = {
             params: parameters
         };
