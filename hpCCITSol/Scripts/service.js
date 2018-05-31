@@ -94,6 +94,11 @@ app.service('crudServiceController', function ($http, $rootScope, $location) {
                     apicontollerurl = "/api/ReportAPI/Report";
                     break;
                 }
+            case "SSRSREPORT":
+                {
+                    apicontollerurl = "/api/SSRSReportAPI/Report";
+                    break;
+                }
             case "VALIDATION":
                 {
                     apicontollerurl = "/api/ValidationAPI/Validation";
