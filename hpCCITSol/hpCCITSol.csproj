@@ -176,6 +176,10 @@
     <Compile Include="Controllers\CheckListActionController.cs" />
     <Compile Include="Controllers\APIMgmtController.cs" />
     <Compile Include="Controllers\APIMgmtAPIController.cs" />
+    <Compile Include="Controllers\SSRSReportAPIController.cs" />
+    <Compile Include="Controllers\SSRSReportController.cs" />
+    <Compile Include="Controllers\ValidationAPIController.cs" />
+    <Compile Include="Controllers\ValidationController.cs" />
     <Compile Include="Controllers\InventoryAPIController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\MasterRefController.cs" />
@@ -297,6 +301,9 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sprint_ref.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ssrs_report_ref.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\status_ref.cs">
@@ -475,6 +482,8 @@
     <Content Include="Scripts\CheckListTemplateController.js" />
     <Content Include="Scripts\CheckListActionController.js" />
     <Content Include="Scripts\APIMgmtController.js" />
+    <Content Include="Scripts\SSRSReportController.js" />
+    <Content Include="Scripts\ValidationController.js" />
     <Content Include="Scripts\InventoryController.js" />
     <Content Include="Scripts\draggable-rows.js" />
     <Content Include="Scripts\MasterRefController.js" />
@@ -561,6 +570,9 @@
     <Content Include="Views\APIMgmt\Index.cshtml" />
     <Content Include="Views\Settings\FileManager.cshtml" />
     <Content Include="Views\Inventory\Index.cshtml" />
+    <Content Include="Views\Validation\Index.cshtml" />
+    <Content Include="Views\Validation\ConfigVault.cshtml" />
+    <Content Include="Views\SSRSReport\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Documents\RFCTemplates\" />
