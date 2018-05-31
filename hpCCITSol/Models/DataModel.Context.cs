@@ -59,5 +59,6 @@ namespace eTrackerSol.Models
         public DbSet<sub_type_ref> sub_type_ref { get; set; }
         public DbSet<type_ref> type_ref { get; set; }
         public DbSet<work_item_ref> work_item_ref { get; set; }
+        public DbSet<ssrs_report_ref> ssrs_report_ref { get; set; }
     }
 }

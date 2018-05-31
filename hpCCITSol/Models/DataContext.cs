@@ -54,6 +54,7 @@ namespace eTrackerSol.Models
         public DbSet<api_type_ref> APITypes { get; set; }
 
         public DbSet<inventory_ref> Inventory { get; set; }
+        public DbSet<ssrs_report_ref> SSRSReports { get; set; }
 
         public override int SaveChanges()
         {

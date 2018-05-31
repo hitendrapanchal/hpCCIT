@@ -35,6 +35,7 @@
           <EntitySet Name="server_ref" EntityType="DataModel.Store.server_ref" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="server_type_ref" EntityType="DataModel.Store.server_type_ref" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sprint_ref" EntityType="DataModel.Store.sprint_ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ssrs_report_ref" EntityType="DataModel.Store.ssrs_report_ref" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="status_ref" EntityType="DataModel.Store.status_ref" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="status_type_ref" EntityType="DataModel.Store.status_type_ref" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sub_type_ref" EntityType="DataModel.Store.sub_type_ref" store:Type="Tables" Schema="dbo" />
@@ -375,6 +376,20 @@
           <Property Name="sprint_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="sprint_nm" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="ssrs_report_ref">
+          <Key>
+            <PropertyRef Name="ssrs_report_id" />
+          </Key>
+          <Property Name="ssrs_report_id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ssrs_report_nm" Type="nvarchar" MaxLength="500" />
+          <Property Name="is_scheduling" Type="bit" />
+          <Property Name="scheduler_interval_minutes" Type="smallint" />
+          <Property Name="scheduler_output_type" Type="tinyint" />
+          <Property Name="scheduler_email_ids" Type="ntext" />
+          <Property Name="scheduler_last_executed" Type="datetime" />
+          <Property Name="scheduler_dates" Type="nvarchar" MaxLength="2000" />
+          <Property Name="comments" Type="ntext" />
+        </EntityType>
         <EntityType Name="status_ref">
           <Key>
             <PropertyRef Name="status_id" />
@@ -459,6 +474,7 @@
           <EntitySet Name="sub_type_ref" EntityType="eTrackerDataModel.sub_type_ref" />
           <EntitySet Name="type_ref" EntityType="eTrackerDataModel.type_ref" />
           <EntitySet Name="work_item_ref" EntityType="eTrackerDataModel.work_item_ref" />
+          <EntitySet Name="ssrs_report_ref" EntityType="eTrackerDataModel.ssrs_report_ref" />
         </EntityContainer>
         <EntityType Name="api_ref">
           <Key>
@@ -838,6 +854,20 @@
           <Property Type="String" Name="created_usr_id" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="modified_dtm" Precision="3" />
           <Property Type="String" Name="modified_usr_id" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ssrs_report_ref">
+          <Key>
+            <PropertyRef Name="ssrs_report_id" />
+          </Key>
+          <Property Type="Int16" Name="ssrs_report_id" Nullable="false" />
+          <Property Type="String" Name="ssrs_report_nm" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="is_scheduling" />
+          <Property Type="Int16" Name="scheduler_interval_minutes" />
+          <Property Type="Byte" Name="scheduler_output_type" />
+          <Property Type="String" Name="scheduler_email_ids" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="scheduler_last_executed" Precision="3" />
+          <Property Type="String" Name="scheduler_dates" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="comments" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1255,6 +1285,21 @@
                 <ScalarProperty Name="work_item_title" ColumnName="work_item_title" />
                 <ScalarProperty Name="work_item_ext_id" ColumnName="work_item_ext_id" />
                 <ScalarProperty Name="work_item_id" ColumnName="work_item_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ssrs_report_ref">
+            <EntityTypeMapping TypeName="eTrackerDataModel.ssrs_report_ref">
+              <MappingFragment StoreEntitySet="ssrs_report_ref">
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="scheduler_dates" ColumnName="scheduler_dates" />
+                <ScalarProperty Name="scheduler_last_executed" ColumnName="scheduler_last_executed" />
+                <ScalarProperty Name="scheduler_email_ids" ColumnName="scheduler_email_ids" />
+                <ScalarProperty Name="scheduler_output_type" ColumnName="scheduler_output_type" />
+                <ScalarProperty Name="scheduler_interval_minutes" ColumnName="scheduler_interval_minutes" />
+                <ScalarProperty Name="is_scheduling" ColumnName="is_scheduling" />
+                <ScalarProperty Name="ssrs_report_nm" ColumnName="ssrs_report_nm" />
+                <ScalarProperty Name="ssrs_report_id" ColumnName="ssrs_report_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
