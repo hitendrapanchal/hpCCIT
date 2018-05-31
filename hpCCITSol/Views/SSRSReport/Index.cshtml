@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "hpCCIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Scripts/SSRSReportController.js"></script>
+
+
+<div ng-controller="SSRSReportController" id="div11">
+
+    <div class="container" style="padding-top: 30px;">
+        <h1 style="text-align: center" class="page-header">Reports</h1>
+    </div>
+
+    <div class="container" id="body">
+
+        <div class="row">
+            <div class="col-md-4" style="padding-top: 25px">
+                <span ng-click="AddNew();" class="btn btn-success">Add SSRS Report</span>
+            </div>
+            <div class="col-md-2" ng-show="ShowHide.SearchBox">
+                <label class="control-label">Interval</label>
+                <select class="form-control" ng-model="filters.interval" ng-options="item.key as item.value for item in startupdata.intervals"></select>
+
+
+            </div>
+            <div class="col-md-3" ng-show="ShowHide.SearchBox">
+                <label class="control-label">Output</label>
+                <select class="form-control" ng-model="filters.scheduler_output_type" ng-options="item.key as item.value for item in startupdata.reportoutputs"></select>
+
+            </div>
+            <div class="col-md-2" style="padding-top: 25px" ng-show="ShowHide.SearchBox">
+                <span ng-click="EnableDisableSchedulingTimer();" class="btn btn-info pull-right">Enable Scheduler</span>
+            </div>
+
+            <div class="col-md-1" style="padding-top: 25px" ng-show="ShowHide.SearchBox">
+                <span ng-click="ExecuteReport();" class="btn btn-info pull-right">Execute</span>
+            </div>
+        </div>
+        <p></p>
+        <div class="row">
+            <div class="col-md-12">
+                <div ui-grid="gridOptions1" ui-grid-edit ui-grid-selection ui-grid-exporter class="grid" style="height: 400px;"></div>
+            </div>
+        </div>
+        <br />
+
+    </div>
+
+    <div class="container">
+        <script type="text/ng-template" id="myModalContent.html">
+    <form name="myform">
+        <div class="modal-header bg-success">
+            <h3 class="modal-title">SSRS Report Tracker</h3>
+        </div>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <div class="row form-group">
+
+                <div class="col-xs-4">
+                    <label class="control-label">SSRS Report Name</label>
+                    <input type="text" class="form-control"  ng-model="tmp_data.ssrs_report_nm" required/>
+                </div>
+                <div class="col-xs-4">
+                    <label class="control-label">Scheduler <input  type="checkbox" ng-model="tmp_data.is_scheduling"></label>
+                </div>
+                <div class="col-xs-4" >
+                    <label class="control-label">Interval</label>
+                    <select class="form-control" ng-model="tmp_data.scheduler_interval_minutes" ng-options="item.key as item.value for item in startupdata.intervals"></select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label class="control-label">Distribution To</label>
+                    <textarea class="form-control" name="review" rows="4" ng-model="tmp_data.scheduler_email_ids" placeholder="EmailID1;EmailID2;"></textarea>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label class="control-label">Send Report on these dates</label>
+                    <textarea class="form-control" name="review" rows="4" ng-model="tmp_data.scheduler_dates" placeholder="2018-03-24 07:30;2018-04-21 07:30;"></textarea>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Comments</label>
+            <textarea class="form-control" name="review" rows="4" ng-model="tmp_data.comments"></textarea>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="ok(true)" ng-disabled="myform.$invalid">Save</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+        </script>
+
+    </div>
+
+
+</div>
